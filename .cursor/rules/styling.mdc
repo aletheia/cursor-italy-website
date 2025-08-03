@@ -1,7 +1,7 @@
 ---
+globs: *.css
 alwaysApply: false
 ---
-
 # Styling Development Rules
 
 ## Tailwind CSS
