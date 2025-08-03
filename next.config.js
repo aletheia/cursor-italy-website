@@ -11,9 +11,7 @@ const nextConfig = {
     minimumCacheTTL: 60,
   },
   // AWS Amplify specific optimizations
-  // Ensure static assets are properly handled
   assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',
-  // Optimize for Amplify deployment
   compress: true,
   poweredByHeader: false,
   generateEtags: false,
