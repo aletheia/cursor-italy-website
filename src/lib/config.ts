@@ -6,10 +6,15 @@ export const siteConfig: SiteConfig = {
   url: 'https://cursor-italy.dev', // Update with actual domain
   location: 'Milano, Italy',
   organizer: 'Luca Bianchi',
+  images: {
+    ogImage: '/images/cursor_milano_square.jpg',
+    heroImage: '/images/cursor_milano_landscape.jpg',
+    defaultEventImage: '/images/meetup_20250916.jpg',
+  },
   social: {
     meetup: 'https://www.meetup.com/cursor-italy/',
     linkedin: 'https://linkedin.com/company/cursor-italy', // Update with actual LinkedIn
-    luma: 'https://lu.ma/cursor-italy', // Update with actual Lu.ma
+    luma: 'https://lu.ma/cursor-milano-settembre', // Updated with actual Lu.ma event
     sessionize: 'https://sessionize.com/cursor-italy', // Update with actual Sessionize
   },
 };

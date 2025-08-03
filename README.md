@@ -7,6 +7,7 @@ Welcome to the official website for **Cursor Italy**, Milan's premier community 
 Cursor Italy is a vibrant community of developers, creators, and curious minds shaping the future with AI. We host monthly meetups, workshops, and talks in Milano, focusing on Cursor - the AI-native IDE that's transforming how we build software.
 
 ### Community Features
+
 - 🇮🇹 **Based in Milano** - Italy's tech hub
 - 👥 **14+ Active Members** and growing
 - 📅 **Monthly Events** with expert speakers
@@ -24,7 +25,7 @@ Cursor Italy is a vibrant community of developers, creators, and curious minds s
 
 ## 📁 Project Structure
 
-```
+```bash
 cursor-italy-website/
 ├── src/
 │   ├── app/                 # Next.js App Router pages
@@ -57,18 +58,20 @@ cursor-italy-website/
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm, yarn, or pnpm
 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd cursor-italy-website
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    # or
@@ -78,6 +81,7 @@ cursor-italy-website/
    ```
 
 3. **Run the development server**
+
    ```bash
    npm run dev
    # or
@@ -141,6 +145,7 @@ Full sponsor description...
 ### Updating About Content
 
 Modify files in `content/about/`:
+
 - `description.md` - Main about page content
 - `founder.md` - Founder profile
 - `code-of-conduct.md` - Community guidelines
@@ -148,12 +153,14 @@ Modify files in `content/about/`:
 ## 🎨 Design System
 
 ### Colors
+
 - **Primary**: Cursor Blue (`#007ACC`)
 - **Milano Gradient**: Teal to Blue to Pink
 - **Background**: Gray-50 for sections
 - **Cards**: White with subtle shadows
 
 ### Components
+
 - **Buttons**: Primary (blue) and Secondary (gray) variants
 - **Cards**: Hover effects with gentle shadows
 - **Typography**: Inter font family
@@ -164,6 +171,7 @@ Modify files in `content/about/`:
 ### Site Settings
 
 Update `src/lib/config.ts` to modify:
+
 - Site title and description
 - Social media links
 - Contact information
@@ -172,6 +180,7 @@ Update `src/lib/config.ts` to modify:
 ### Social Platforms
 
 Current integrations:
+
 - **Meetup.com**: Main event platform
 - **LinkedIn**: Professional networking
 - **Lu.ma**: Event announcements
@@ -180,17 +189,20 @@ Current integrations:
 ## 📱 Features
 
 ### Responsive Design
+
 - Mobile-first approach
 - Optimized for all screen sizes
 - Touch-friendly navigation
 
 ### SEO Optimized
+
 - Meta tags and Open Graph
 - Structured data
 - Optimized images
 - Fast loading times
 
 ### Accessibility
+
 - WCAG 2.1 AA compliance
 - Keyboard navigation
 - Screen reader friendly
@@ -207,11 +219,13 @@ Current integrations:
 ### Custom Deployment
 
 1. **Build the project**
+
    ```bash
    npm run build
    ```
 
 2. **Start production server**
+
    ```bash
    npm start
    ```
@@ -219,18 +233,21 @@ Current integrations:
 ## 📋 Content Guidelines
 
 ### Events
+
 - Use clear, engaging titles
 - Include all relevant details (time, location, speakers)
 - Add compelling descriptions
 - Use high-quality images
 
 ### Speakers
+
 - Provide speaker bios and photos
 - Include talk abstracts
 - Link to speaker social profiles
 - Respect speaker preferences
 
 ### Code of Conduct
+
 - Maintain inclusive language
 - Update regularly as community grows
 - Ensure clear reporting procedures
@@ -247,12 +264,14 @@ We welcome contributions! Please:
 5. Submit a pull request
 
 ### Content Contributions
+
 - Event reports and photos
 - Speaker profiles
 - Community stories
 - Technical articles
 
 ### Code Contributions
+
 - Bug fixes
 - Feature enhancements
 - Performance improvements
@@ -263,7 +282,7 @@ We welcome contributions! Please:
 - **Founder**: Luca Bianchi (Cursor Ambassador)
 - **Meetup**: [Cursor Italy Meetup](https://www.meetup.com/cursor-italy/)
 - **LinkedIn**: [Follow us](https://linkedin.com/company/cursor-italy)
-- **Email**: organizers@cursor-italy.dev
+- **Email**: <organizers@cursor-italy.dev>
 
 ## 📄 License
 
@@ -278,6 +297,6 @@ This project is open source. Please see the LICENSE file for details.
 
 ---
 
-**Built with ❤️ for the Italian developer community**
+## Built with ❤️ for the Italian developer community
 
 *"The future of development is here, and it's powered by AI. Let's build it together."* - Luca Bianchi

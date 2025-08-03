@@ -4,14 +4,15 @@ date: "2025-09-16"
 startTime: "18:30"
 endTime: "21:00"
 timezone: "CEST"
-location: "TBD"
+location: "Milan, Lombardy"
 locationUrl: ""
 description: "Join us for an evening of innovation and hands-on learning with Cursor, the AI-native IDE that's transforming development."
-image: "/images/events/cursor-meetup-2025-09-16.jpg"
+image: "/images/events/2025-09-16-cursor-meetup/event-banner.jpg"
+eventDetailImage: "/images/events/2025-09-16-cursor-meetup/event-detail-banner.jpg"
 published: true
-attendees: 5
-maxAttendees: 50
-registrationUrl: "https://www.meetup.com/cursor-italy/"
+attendees: 50
+maxAttendees: 100
+registrationUrl: "https://lu.ma/cursor-milano-settembre"
 tags: ["AI", "Development", "Cursor", "Live Coding"]
 speakers:
   - name: "Simone Lusenti"
@@ -23,6 +24,11 @@ speakers:
 ---
 
 Join us for an evening of innovation and hands-on learning with **Cursor**, the AI-native IDE that's transforming the way developers and teams build software. Whether you're a backend engineer, product manager, or indie hacker, this meetup is your chance to explore the future of fast, intelligent development.
+
+**📅 Date: September 16, 2025**  
+**🕡 Time: 18:30**  
+**📍 Location: Milan, Lombardy**  
+**🎟️ RSVP Now – Limited Spots Available!**
 
 We're featuring two cutting-edge talks by top experts in AI-assisted coding:
 
@@ -44,21 +50,26 @@ Before you code, define what matters. Luca will walk you through how Cursor's ag
 
 🍕 Drinks and snacks included.
 
-### What to Expect:
+**Register now on [Lu.ma](https://lu.ma/cursor-milano-settembre) to secure your spot!**
+
+### What to Expect
+
 - Live coding demonstrations
 - Hands-on workshops
 - Networking with fellow developers
 - Q&A sessions with speakers
 - Free refreshments
 
-### Who Should Attend:
+### Who Should Attend
+
 - Developers and engineers
 - Product managers
 - Tech entrepreneurs
 - AI enthusiasts
 - Anyone curious about the future of development
 
-### Bring:
+### Bring
+
 - Your laptop (optional for hands-on sessions)
 - Questions about AI-powered development
 - Your enthusiasm for building amazing things!

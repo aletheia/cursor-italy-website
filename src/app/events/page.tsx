@@ -244,7 +244,7 @@ export default async function EventsPage() {
                   <div className="space-y-3 text-left text-sm">
                     <div className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-white rounded-full"></div>
-                      <span>Lightning talks (5-10 minutes)</span>
+                      <span>Open Discussion</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -252,11 +252,11 @@ export default async function EventsPage() {
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-white rounded-full"></div>
-                      <span>Live coding demos</span>
+                      <span>Live coding sessions</span>
                     </div>
                     <div className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-white rounded-full"></div>
-                      <span>Interactive workshops</span>
+                      <span>Hands-on sessions</span>
                     </div>
                   </div>
                 </div>

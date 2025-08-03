@@ -17,15 +17,39 @@ export function getEventSlugs(): string[] {
   if (!fs.existsSync(eventsDir)) {
     return [];
   }
-  return fs.readdirSync(eventsDir).filter(name => name.endsWith('.md'));
+  
+  const items = fs.readdirSync(eventsDir, { withFileTypes: true });
+  const eventSlugs: string[] = [];
+  
+  for (const item of items) {
+    if (item.isDirectory()) {
+      // Check if the directory contains an index.md file
+      const indexPath = path.join(eventsDir, item.name, 'index.md');
+      if (fs.existsSync(indexPath)) {
+        eventSlugs.push(item.name);
+      }
+    } else if (item.isFile() && item.name.endsWith('.md')) {
+      // Handle legacy .md files directly in events directory
+      eventSlugs.push(item.name.replace(/\.md$/, ''));
+    }
+  }
+  
+  return eventSlugs;
 }
 
 export async function getEventBySlug(slug: string): Promise<Event | null> {
   const realSlug = slug.replace(/\.md$/, '');
-  const fullPath = path.join(contentDirectory, 'events', `${realSlug}.md`);
+  
+  // Try the new folder structure first (index.md inside folder)
+  let fullPath = path.join(contentDirectory, 'events', realSlug, 'index.md');
   
   if (!fs.existsSync(fullPath)) {
-    return null;
+    // Fallback to legacy structure (direct .md file)
+    fullPath = path.join(contentDirectory, 'events', `${realSlug}.md`);
+    
+    if (!fs.existsSync(fullPath)) {
+      return null;
+    }
   }
 
   const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -43,6 +67,7 @@ export async function getEventBySlug(slug: string): Promise<Event | null> {
     locationUrl: data.locationUrl,
     description: data.description || '',
     image: data.image,
+    eventDetailImage: data.eventDetailImage,
     published: data.published ?? true,
     attendees: data.attendees,
     maxAttendees: data.maxAttendees,

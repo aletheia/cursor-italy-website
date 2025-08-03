@@ -136,7 +136,7 @@ export default function Hero({ nextEvent, memberCount = 14 }: HeroProps) {
               {/* Main Image */}
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/design/cursor_milano_landscape.jpg"
+                  src="/images/cursor_milano_landscape.jpg"
                   alt="Cursor Milano Meetup"
                   fill
                   className="object-cover"

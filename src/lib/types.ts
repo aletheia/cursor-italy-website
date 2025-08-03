@@ -9,6 +9,7 @@ export interface Event {
   locationUrl?: string;
   description: string;
   image?: string;
+  eventDetailImage?: string;
   published: boolean;
   attendees?: number;
   maxAttendees?: number;
@@ -59,12 +60,19 @@ export interface SocialLinks {
   discord?: string;
 }
 
+export interface ImageConfig {
+  ogImage: string;
+  heroImage: string;
+  defaultEventImage: string;
+}
+
 export interface SiteConfig {
   title: string;
   description: string;
   url: string;
   location: string;
   organizer: string;
+  images: ImageConfig;
   social: SocialLinks;
 }
 

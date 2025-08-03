@@ -115,6 +115,7 @@ This Code of Conduct applies to all community spaces, including:
 ## Attribution
 
 This Code of Conduct is adapted from:
+
 - [Contributor Covenant](https://www.contributor-covenant.org/), version 2.1
 - [Conference Code of Conduct](https://confcodeofconduct.com/)
 - Best practices from the global tech community

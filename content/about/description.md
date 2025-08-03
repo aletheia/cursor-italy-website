@@ -37,20 +37,24 @@ To create a vibrant community where developers, designers, and tech enthusiasts 
 ## What We Offer
 
 ### 🎤 **Regular Meetups**
+
 Monthly gatherings featuring expert speakers, live coding sessions, and networking opportunities.
 
-### 🛠️ **Hands-on Workshops**
+### 🛠️ **Hands-on Sessions**
+
 Interactive sessions where you'll learn by doing, with real projects and practical applications.
 
 ### 💬 **Community Discussions**
+
 Online and offline spaces to share tips, ask questions, and collaborate on projects.
 
 ### 🌟 **Speaking Opportunities**
+
 We welcome community members to share their expertise and experiences through our [Sessionize CFP](https://sessionize.com).
 
 ## Community Stats
 
-- **14+ Active Members** and growing
+<!-- - **14+ Active Members** and growing -->
 - **Monthly Meetups** in Milano
 - **Expert Speakers** from across Italy and beyond
 - **Hands-on Learning** with real-world applications
