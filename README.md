@@ -101,24 +101,24 @@ Create a new markdown file in `content/events/` with the following structure:
 
 ```markdown
 ---
-title: "Event Title"
-date: "2025-MM-DD"
-startTime: "18:30"
-endTime: "21:00"
-timezone: "CEST"
-location: "TBD"
-locationUrl: ""
-description: "Brief event description"
-image: "/images/events/event-image.jpg"
+title: 'Event Title'
+date: '2025-MM-DD'
+startTime: '18:30'
+endTime: '21:00'
+timezone: 'CEST'
+location: 'TBD'
+locationUrl: ''
+description: 'Brief event description'
+image: '/images/events/event-image.jpg'
 published: true
 attendees: 0
 maxAttendees: 50
-registrationUrl: "https://meetup.com/..."
-tags: ["AI", "Development", "Cursor"]
+registrationUrl: 'https://meetup.com/...'
+tags: ['AI', 'Development', 'Cursor']
 speakers:
-  - name: "Speaker Name"
-    topic: "Talk Title"
-    bio: "Speaker bio"
+  - name: 'Speaker Name'
+    topic: 'Talk Title'
+    bio: 'Speaker bio'
 ---
 
 Full event description in markdown...
@@ -130,11 +130,11 @@ Create a new markdown file in `content/sponsors/` with:
 
 ```markdown
 ---
-name: "Sponsor Name"
-tier: "main" # main, gold, silver, bronze, community
-logo: "/images/sponsors/sponsor-logo.png"
-website: "https://sponsor.com"
-description: "Brief description"
+name: 'Sponsor Name'
+tier: 'main' # main, gold, silver, bronze, community
+logo: '/images/sponsors/sponsor-logo.png'
+website: 'https://sponsor.com'
+description: 'Brief description'
 featured: true
 order: 1
 ---
@@ -299,4 +299,4 @@ This project is open source. Please see the LICENSE file for details.
 
 ## Built with ❤️ for the Italian developer community
 
-*"The future of development is here, and it's powered by AI. Let's build it together."* - Luca Bianchi
+_"The future of development is here, and it's powered by AI. Let's build it together."_ - Luca Bianchi

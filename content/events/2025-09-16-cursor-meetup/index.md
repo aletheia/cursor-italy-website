@@ -1,26 +1,26 @@
 ---
-title: "🚀 Cursor Meetup – Build Faster, Smarter with AI-Powered Development"
-date: "2025-09-16"
-startTime: "18:30"
-endTime: "21:00"
-timezone: "CEST"
-location: "Milan, Lombardy"
-locationUrl: ""
+title: '🚀 Cursor Meetup – Build Faster, Smarter with AI-Powered Development'
+date: '2025-09-16'
+startTime: '18:30'
+endTime: '21:00'
+timezone: 'CEST'
+location: 'Milan, Lombardy'
+locationUrl: ''
 description: "Join us for an evening of innovation and hands-on learning with Cursor, the AI-native IDE that's transforming development."
-image: "/images/events/2025-09-16-cursor-meetup/event-banner.jpg"
-eventDetailImage: "/images/events/2025-09-16-cursor-meetup/event-detail-banner.jpg"
+image: '/images/events/2025-09-16-cursor-meetup/banner@1220x250.jpg'
+eventDetailImage: '/images/events/2025-09-16-cursor-meetup/banner@800x600.jpg'
 published: true
 attendees: 50
 maxAttendees: 100
-registrationUrl: "https://lu.ma/cursor-milano-settembre"
-tags: ["AI", "Development", "Cursor", "Live Coding"]
+registrationUrl: 'https://lu.ma/cursor-milano-settembre'
+tags: ['AI', 'Development', 'Cursor', 'Live Coding']
 speakers:
-  - name: "Simone Lusenti"
-    topic: "Build Your Serverless Backend in 5 Minutes with Cursor"
-    bio: "Expert in AI-assisted coding and serverless architecture"
-  - name: "Luca Bianchi"
-    topic: "Craft Your Product Specs Before Writing a Single Line of Code"
-    bio: "Founder of Cursor Italy, Cursor Ambassador"
+  - name: 'Simone Lusenti'
+    topic: 'Build Your Serverless Backend in 5 Minutes with Cursor'
+    bio: 'Expert in AI-assisted coding and serverless architecture'
+  - name: 'Luca Bianchi'
+    topic: 'Craft Your Product Specs Before Writing a Single Line of Code'
+    bio: 'Founder of Cursor Italy, Cursor Ambassador'
 ---
 
 Join us for an evening of innovation and hands-on learning with **Cursor**, the AI-native IDE that's transforming the way developers and teams build software. Whether you're a backend engineer, product manager, or indie hacker, this meetup is your chance to explore the future of fast, intelligent development.
@@ -76,4 +76,4 @@ Before you code, define what matters. Luca will walk you through how Cursor's ag
 
 This event is perfect for both beginners wanting to learn about AI-assisted development and experienced developers looking to level up their productivity with Cursor.
 
-*Can't make it? Don't worry - we'll be hosting regular meetups. Follow us for updates on future events!*
+_Can't make it? Don't worry - we'll be hosting regular meetups. Follow us for updates on future events!_

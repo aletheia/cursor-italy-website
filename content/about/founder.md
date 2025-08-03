@@ -1,7 +1,7 @@
 ---
-title: "Meet Our Organizers"
-description: "Learn about the organizers of Cursor Italy"
-lastUpdated: "2024-12-31"
+title: 'Meet Our Organizers'
+description: 'Learn about the organizers of Cursor Italy'
+lastUpdated: '2024-12-31'
 ---
 
 # Meet Luca Bianchi

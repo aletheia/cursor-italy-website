@@ -1,7 +1,7 @@
 ---
-title: "About Cursor Italy"
-description: "The community for builders, creators, and curious minds shaping the future with AI in Italy"
-lastUpdated: "2024-12-31"
+title: 'About Cursor Italy'
+description: 'The community for builders, creators, and curious minds shaping the future with AI in Italy'
+lastUpdated: '2024-12-31'
 ---
 
 # Welcome to Cursor Italy Meetup 🇮🇹
@@ -29,7 +29,7 @@ Let's build, learn, and grow together — one session at a time.
 To create a vibrant community where developers, designers, and tech enthusiasts can:
 
 - **Learn together** about the latest AI-powered development tools and techniques
-- **Share knowledge** through talks, workshops, and hands-on coding sessions  
+- **Share knowledge** through talks, workshops, and hands-on coding sessions
 - **Build connections** with like-minded professionals across Italy
 - **Stay current** with the rapidly evolving landscape of AI-assisted development
 - **Collaborate** on innovative projects that push the boundaries of what's possible
@@ -55,6 +55,7 @@ We welcome community members to share their expertise and experiences through ou
 ## Community Stats
 
 <!-- - **14+ Active Members** and growing -->
+
 - **Monthly Meetups** in Milano
 - **Expert Speakers** from across Italy and beyond
 - **Hands-on Learning** with real-world applications
@@ -68,5 +69,5 @@ Ready to join the future of development? Here's how you can get involved:
 3. **Speak at an Event** - Submit your talk proposal via [Sessionize](https://sessionize.com)
 4. **Spread the Word** - Tell your developer friends about our community
 
-*Location: Milano, Italy*  
-*Community Type: Public - Everyone Welcome*
+_Location: Milano, Italy_  
+_Community Type: Public - Everyone Welcome_

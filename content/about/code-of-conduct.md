@@ -1,8 +1,8 @@
 ---
-title: "Code of Conduct"
-description: "Community guidelines and expected behavior for Cursor Italy members"
-lastUpdated: "2024-12-31"
-version: "1.0"
+title: 'Code of Conduct'
+description: 'Community guidelines and expected behavior for Cursor Italy members'
+lastUpdated: '2024-12-31'
+version: '1.0'
 ---
 
 # Cursor Italy Code of Conduct
@@ -126,7 +126,7 @@ If you have questions about this Code of Conduct, please contact the organizers 
 
 ---
 
-*By participating in Cursor Italy events and activities, you agree to abide by this Code of Conduct. This document is a living document and may be updated as our community grows and evolves.*
+_By participating in Cursor Italy events and activities, you agree to abide by this Code of Conduct. This document is a living document and may be updated as our community grows and evolves._
 
 **Last Updated**: December 31, 2024  
 **Version**: 1.0  

@@ -19,7 +19,8 @@ function verifyImages() {
   }
 
   // List all images in public/images
-  const publicImages = fs.readdirSync(publicImagesDir, { recursive: true })
+  const publicImages = fs
+    .readdirSync(publicImagesDir, { recursive: true })
     .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
     .map(file => path.join('images', file));
 
@@ -28,7 +29,8 @@ function verifyImages() {
 
   // Check if design images are copied to public
   if (fs.existsSync(designDir)) {
-    const designImages = fs.readdirSync(designDir)
+    const designImages = fs
+      .readdirSync(designDir)
       .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file));
 
     console.log('\n📁 Images in design/ that should be in public/images/:');
@@ -44,12 +46,12 @@ function verifyImages() {
 
   // Check for common image references in code
   console.log('\n🔍 Checking for image references in code...');
-  
+
   const imageReferences = [
     '/images/cursor_milano_landscape.jpg',
     '/images/cursor_milano_square.jpg',
     '/images/meetup_20250916.jpg',
-    '/images/ambassador.png'
+    '/images/ambassador.png',
   ];
 
   imageReferences.forEach(ref => {
@@ -71,4 +73,4 @@ function verifyImages() {
 }
 
 // Run verification
-verifyImages(); 
+verifyImages();

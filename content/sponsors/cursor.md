@@ -1,9 +1,9 @@
 ---
-name: "Cursor"
-tier: "main"
-logo: "/images/sponsors/cursor-logo.png"
-website: "https://cursor.sh"
-description: "The AI-native IDE transforming how developers build software"
+name: 'Cursor'
+tier: 'main'
+logo: '/images/sponsors/cursor-logo.png'
+website: 'https://cursor.sh'
+description: 'The AI-native IDE transforming how developers build software'
 featured: true
 order: 1
 ---
@@ -24,15 +24,19 @@ Cursor combines the familiar feel of VS Code with powerful AI capabilities that 
 ## Key Features
 
 ### 🧠 **AI-First Design**
+
 Built from the ground up with AI integration, not as an afterthought.
 
 ### ⚡ **Lightning Fast**
+
 Optimized performance that doesn't sacrifice speed for intelligence.
 
 ### 🔄 **Seamless Migration**
+
 Easy transition from other IDEs with familiar shortcuts and workflows.
 
 ### 🌐 **Universal Language Support**
+
 Works with all major programming languages and frameworks.
 
 ## Supporting Our Community
@@ -55,4 +59,4 @@ Ready to experience the future of development?
 
 ---
 
-*We're grateful to Cursor for their support of the Italian developer community and their commitment to advancing AI-powered development tools.*
+_We're grateful to Cursor for their support of the Italian developer community and their commitment to advancing AI-powered development tools._

@@ -1,8 +1,10 @@
 import fs from 'fs';
 import path from 'path';
+
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
+
 import { Event, Sponsor, AboutPage } from './types';
 
 const contentDirectory = path.join(process.cwd(), 'content');
@@ -17,10 +19,10 @@ export function getEventSlugs(): string[] {
   if (!fs.existsSync(eventsDir)) {
     return [];
   }
-  
+
   const items = fs.readdirSync(eventsDir, { withFileTypes: true });
   const eventSlugs: string[] = [];
-  
+
   for (const item of items) {
     if (item.isDirectory()) {
       // Check if the directory contains an index.md file
@@ -33,20 +35,20 @@ export function getEventSlugs(): string[] {
       eventSlugs.push(item.name.replace(/\.md$/, ''));
     }
   }
-  
+
   return eventSlugs;
 }
 
 export async function getEventBySlug(slug: string): Promise<Event | null> {
   const realSlug = slug.replace(/\.md$/, '');
-  
+
   // Try the new folder structure first (index.md inside folder)
   let fullPath = path.join(contentDirectory, 'events', realSlug, 'index.md');
-  
+
   if (!fs.existsSync(fullPath)) {
     // Fallback to legacy structure (direct .md file)
     fullPath = path.join(contentDirectory, 'events', `${realSlug}.md`);
-    
+
     if (!fs.existsSync(fullPath)) {
       return null;
     }
@@ -59,48 +61,48 @@ export async function getEventBySlug(slug: string): Promise<Event | null> {
   return {
     slug: realSlug,
     title: data.title || '',
+    description: data.description || '',
     date: data.date || '',
     startTime: data.startTime || '',
     endTime: data.endTime,
     timezone: data.timezone,
     location: data.location || '',
     locationUrl: data.locationUrl,
-    description: data.description || '',
-    image: data.image,
+    address: data.address || '',
+    image: data.image || '',
     eventDetailImage: data.eventDetailImage,
-    published: data.published ?? true,
+    content: htmlContent,
+    speakers: data.speakers || [],
+    sponsors: data.sponsors || [],
+    registrationUrl: data.registrationUrl,
     attendees: data.attendees,
     maxAttendees: data.maxAttendees,
-    registrationUrl: data.registrationUrl,
     tags: data.tags || [],
-    speakers: data.speakers || [],
-    content: htmlContent,
+    isUpcoming: new Date(data.date) >= new Date(),
+    isPast: new Date(data.date) < new Date(),
   };
 }
 
 export async function getAllEvents(): Promise<Event[]> {
   const slugs = getEventSlugs();
-  const events = await Promise.all(
-    slugs.map(slug => getEventBySlug(slug))
-  );
-  
+  const events = await Promise.all(slugs.map(slug => getEventBySlug(slug)));
+
   return events
     .filter((event): event is Event => event !== null)
-    .filter(event => event.published)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 }
 
 export async function getUpcomingEvents(): Promise<Event[]> {
   const allEvents = await getAllEvents();
   const now = new Date();
-  
+
   return allEvents.filter(event => new Date(event.date) >= now);
 }
 
 export async function getPastEvents(): Promise<Event[]> {
   const allEvents = await getAllEvents();
   const now = new Date();
-  
+
   return allEvents
     .filter(event => new Date(event.date) < now)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -117,7 +119,7 @@ export function getSponsorSlugs(): string[] {
 export async function getSponsorBySlug(slug: string): Promise<Sponsor | null> {
   const realSlug = slug.replace(/\.md$/, '');
   const fullPath = path.join(contentDirectory, 'sponsors', `${realSlug}.md`);
-  
+
   if (!fs.existsSync(fullPath)) {
     return null;
   }
@@ -131,20 +133,17 @@ export async function getSponsorBySlug(slug: string): Promise<Sponsor | null> {
     name: data.name || '',
     tier: data.tier || 'community',
     logo: data.logo || '',
-    website: data.website || '',
+    url: data.website || '',
     description: data.description || '',
-    featured: data.featured || false,
-    order: data.order || 999,
     content: htmlContent,
+    order: data.order ?? 999,
   };
 }
 
 export async function getAllSponsors(): Promise<Sponsor[]> {
   const slugs = getSponsorSlugs();
-  const sponsors = await Promise.all(
-    slugs.map(slug => getSponsorBySlug(slug))
-  );
-  
+  const sponsors = await Promise.all(slugs.map(slug => getSponsorBySlug(slug)));
+
   return sponsors
     .filter((sponsor): sponsor is Sponsor => sponsor !== null)
     .sort((a, b) => (a.order || 999) - (b.order || 999));
@@ -161,7 +160,7 @@ export function getAboutSlugs(): string[] {
 export async function getAboutBySlug(slug: string): Promise<AboutPage | null> {
   const realSlug = slug.replace(/\.md$/, '');
   const fullPath = path.join(contentDirectory, 'about', `${realSlug}.md`);
-  
+
   if (!fs.existsSync(fullPath)) {
     return null;
   }

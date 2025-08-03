@@ -6,23 +6,28 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply bg-gray-50 text-gray-900 antialiased;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-semibold tracking-tight;
   }
-  
+
   h1 {
     @apply text-4xl lg:text-5xl;
   }
-  
+
   h2 {
     @apply text-3xl lg:text-4xl;
   }
-  
+
   h3 {
     @apply text-2xl lg:text-3xl;
   }
@@ -32,69 +37,69 @@
   .btn {
     @apply inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
-  
+
   .btn-primary {
     @apply btn bg-cursor-blue hover:bg-blue-700 text-white focus:ring-cursor-blue px-6 py-3 text-base;
   }
-  
+
   .btn-secondary {
     @apply btn bg-gray-100 hover:bg-gray-200 text-gray-900 focus:ring-gray-500 px-6 py-3 text-base;
   }
-  
+
   .btn-sm {
     @apply px-4 py-2 text-sm;
   }
-  
+
   .btn-lg {
     @apply px-8 py-4 text-lg;
   }
-  
+
   .card {
     @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6 transition-all duration-200 hover:shadow-md;
   }
-  
+
   .card-hover {
     @apply hover:shadow-lg hover:-translate-y-1;
   }
-  
+
   .gradient-text {
     @apply bg-milano-gradient bg-clip-text text-transparent;
   }
-  
+
   .hero-bg {
     @apply bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50;
   }
-  
+
   .section-padding {
     @apply py-16 lg:py-24;
   }
-  
+
   .container-padding {
     @apply px-4 sm:px-6 lg:px-8;
   }
-  
+
   .prose-custom {
     @apply prose prose-lg max-w-none;
   }
-  
+
   .prose-custom h1,
   .prose-custom h2,
   .prose-custom h3 {
     @apply gradient-text;
   }
-  
+
   .prose-custom a {
     @apply text-cursor-blue hover:text-blue-700 transition-colors duration-200;
   }
-  
+
   .prose-custom code {
     @apply bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm;
   }
-  
+
   .prose-custom pre {
     @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto;
   }
-  
+
   .prose-custom blockquote {
     @apply border-l-4 border-cursor-blue bg-blue-50 p-4 my-6;
   }
@@ -104,15 +109,15 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .animation-delay-200 {
     animation-delay: 200ms;
   }
-  
+
   .animation-delay-400 {
     animation-delay: 400ms;
   }
-  
+
   .animation-delay-600 {
     animation-delay: 600ms;
   }
@@ -153,7 +158,8 @@
 
 /* Gradient animations */
 @keyframes gradient-x {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0%);
   }
   50% {

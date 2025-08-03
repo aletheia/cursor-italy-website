@@ -2,7 +2,8 @@ import { SiteConfig } from './types';
 
 export const siteConfig: SiteConfig = {
   title: 'Cursor Italy',
-  description: 'The community for builders, creators, and curious minds shaping the future with AI in Italy',
+  description:
+    'The community for builders, creators, and curious minds shaping the future with AI in Italy',
   url: 'https://cursor-italy.dev', // Update with actual domain
   location: 'Milano, Italy',
   organizer: 'Luca Bianchi',
