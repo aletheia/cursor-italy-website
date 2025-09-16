@@ -12,7 +12,6 @@ eventDetailImage: '/images/events/2025-09-16-cursor-meetup/banner@800x600.jpg'
 published: true
 attendees: 50
 maxAttendees: 100
-registrationUrl: 'https://lu.ma/cursor-milano-settembre'
 tags: ['AI', 'Development', 'Cursor', 'Live Coding']
 speakers:
   - name: 'Luca Bianchi'
@@ -32,17 +31,13 @@ Join us for an evening of innovation and hands-on learning with **Cursor**, the 
 
 We're featuring two cutting-edge talks by top experts in AI-assisted coding:
 
-## 🛠️ Build Your Serverless Backend in 5 Minutes with Cursor
+## 🛠️ Cursor Meetup Milano kickoff
 
-**👤 Speaker: Simone Lusenti**
+- 👤 Speaker: Luca Bianchi (Founder of Cursor Italy, Cursor Ambassador, CTIO @ [MESA](mesagroup.eu))
 
-See how Cursor can take you from idea to production-ready backend in minutes. Simone will demonstrate how to harness Cursor's powerful AI capabilities to accelerate development cycles, prototype interactively, and significantly reduce time to market.
+## ✍️ Build faster with Cursor
 
-## ✍️ Craft Your Product Specs Before Writing a Single Line of Code
-
-**👤 Speaker: Luca Bianchi**
-
-Before you code, define what matters. Luca will walk you through how Cursor's agents can help structure product specs, generate user stories, and create architecture diagrams—all powered by AI. Ideal for teams that want to align quickly and build with clarity from day one.
+- 👤 Speaker: Nick Miller (Field Engineer @ [Cursor](cursor.sh))
 
 ---
 
