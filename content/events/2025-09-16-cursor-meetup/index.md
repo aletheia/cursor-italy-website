@@ -15,11 +15,11 @@ maxAttendees: 100
 registrationUrl: 'https://lu.ma/cursor-milano-settembre'
 tags: ['AI', 'Development', 'Cursor', 'Live Coding']
 speakers:
-  - name: 'Simone Lusenti'
-    topic: 'Build Your Serverless Backend in 5 Minutes with Cursor'
-    bio: 'Expert in AI-assisted coding and serverless architecture'
   - name: 'Luca Bianchi'
-    topic: 'Craft Your Product Specs Before Writing a Single Line of Code'
+    topic: 'Build faster with Cursor'
+    bio: 'Founder of Cursor Italy, Cursor Ambassador, CTIO @ MESA'
+  - name: 'Nick Miller'
+    topic: 'Build faster with Cursor'
     bio: 'Founder of Cursor Italy, Cursor Ambassador'
 ---
 
