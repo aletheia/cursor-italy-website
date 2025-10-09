@@ -26,13 +26,13 @@ Join us online for a live, hands-on session with **Luca Bianchi** as we explore 
 **📍 Location: Online**  
 **🎟️ Register Now!**
 
-## 🧭 18:00 - 18:15 User Group Presentation
+## 🧭 21:00 - 21:15 User Group Presentation
 
 👤 **Speaker:** Luca Bianchi
 
 Luca will cover onboarding, core workflows, and practical tips to get real value from Cursor on day one.
 
-## 🧭 18:15 - 19:30 Creating a Health Tracking App using Cursor and Next.js
+## 🧭 21:15 - 22:30 Creating a Health Tracking App using Cursor and Next.js
 
 👤 **Speaker:** Luca Bianchi
 
