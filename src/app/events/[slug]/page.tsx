@@ -66,28 +66,26 @@ export default async function EventPage({ params }: EventPageProps) {
       {/* Hero Section */}
       <section className='hero-bg section-padding'>
         <div className='max-w-7xl mx-auto container-padding'>
-          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
-            {/* Content */}
+          {/* Back Link and Title - Full Width */}
+          <div className='mb-12'>
+            <Link
+              href='/events'
+              className='inline-flex items-center text-cursor-blue hover:text-blue-700 transition-colors duration-200 mb-6'
+            >
+              <ArrowLeft className='w-4 h-4 mr-2' />
+              Back to Events
+            </Link>
+
+            <h1 className='text-4xl lg:text-6xl font-bold text-gray-900 leading-tight'>
+              {event.title}
+            </h1>
+          </div>
+
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-12 items-start'>
+            {/* Event Details */}
             <div className='space-y-8'>
-              <div>
-                <Link
-                  href='/events'
-                  className='inline-flex items-center text-cursor-blue hover:text-blue-700 transition-colors duration-200 mb-6'
-                >
-                  <ArrowLeft className='w-4 h-4 mr-2' />
-                  Back to Events
-                </Link>
+              <p className='text-xl text-gray-600'>{event.description}</p>
 
-                <h1 className='text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6'>
-                  {event.title}
-                </h1>
-
-                <p className='text-xl text-gray-600 mb-8'>
-                  {event.description}
-                </p>
-              </div>
-
-              {/* Event Details */}
               <div className='space-y-4'>
                 <div className='flex items-center space-x-3'>
                   <Calendar className='w-5 h-5 text-cursor-blue' />
@@ -154,7 +152,7 @@ export default async function EventPage({ params }: EventPageProps) {
             {/* Event Image */}
             <div className='relative'>
               {(event.eventDetailImage || event.image) && (
-                <div className='relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl'>
+                <div className='relative aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl'>
                   <Image
                     src={(event.eventDetailImage || event.image) as string}
                     alt={event.title}
