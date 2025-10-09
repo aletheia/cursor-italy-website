@@ -22,7 +22,7 @@ speakers:
 Join us online for a live, hands-on session with **Luca Bianchi** as we explore how to use **Cursor**, the AI-native IDE, to design and build a modern Next.js application from scratch.
 
 **📅 Date: October 23, 2025**  
-**🕡 Time: 18:00 - 19:30 CEST**  
+**🕡 Time: 21:00 - 22:30 CEST**  
 **📍 Location: Online and at [CtrlAlt Museum](www.ctrlalt.museum) in [Pavia](https://maps.app.goo.gl/Ay5gfvsnQcKcg7NB7)**
 
 ## 🧭 21:00 - 21:15 User Group Presentation

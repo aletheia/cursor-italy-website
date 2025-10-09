@@ -185,16 +185,6 @@ export default function EventCard({
                 </Link>
               )}
             </div>
-
-            {event.attendees && (
-              <div className='flex items-center text-sm text-gray-600'>
-                <Users className='w-4 h-4 mr-2 flex-shrink-0' />
-                <span>
-                  {event.attendees} attending
-                  {event.maxAttendees && ` / ${event.maxAttendees} max`}
-                </span>
-              </div>
-            )}
           </div>
 
           {/* Tags */}
@@ -213,7 +203,7 @@ export default function EventCard({
 
           {/* Speakers */}
           {event.speakers && event.speakers.length > 0 && (
-            <div className='space-y-2'>
+            <div className='space-y-12'>
               <h4 className='font-medium text-gray-900'>Speakers:</h4>
               <div className='space-y-1'>
                 {event.speakers.map((speaker, index) => (

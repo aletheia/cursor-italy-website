@@ -110,13 +110,6 @@ export default async function EventPage({ params }: EventPageProps) {
                   <MapPin className='w-5 h-5 text-cursor-blue' />
                   <span className='text-gray-700'>{event.location}</span>
                 </div>
-
-                <div className='flex items-center space-x-3'>
-                  <Users className='w-5 h-5 text-cursor-blue' />
-                  <span className='text-gray-700'>
-                    {event.attendees} / {event.maxAttendees} attendees
-                  </span>
-                </div>
               </div>
 
               {/* Tags */}
