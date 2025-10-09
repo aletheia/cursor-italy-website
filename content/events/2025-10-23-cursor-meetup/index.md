@@ -4,14 +4,14 @@ date: '2025-10-23'
 startTime: '21:00'
 endTime: '22:30'
 timezone: 'CEST'
-location: 'Online'
-locationUrl: ''
+location: 'Online and at ctrlalt.museum'
+locationUrl: 'https://maps.app.goo.gl/Ay5gfvsnQcKcg7NB7'
 description: 'Join us online for a live, hands-on session exploring how to use Cursor, the AI-native IDE, to design and build a modern Next.js application from scratch.'
 image: '/images/events/2025-10-23-cursor-meetup/banner@1220x250.jpg'
 eventDetailImage: '/images/events/2025-10-23-cursor-meetup/banner@1920x1080.jpg'
 published: true
 attendees: 0
-maxAttendees: 200
+maxAttendees: 50
 tags: ['AI', 'Development', 'Cursor', 'Next.js', 'Live Coding', 'Online']
 speakers:
   - name: 'Luca Bianchi'
@@ -23,8 +23,7 @@ Join us online for a live, hands-on session with **Luca Bianchi** as we explore 
 
 **📅 Date: October 23, 2025**  
 **🕡 Time: 18:00 - 19:30 CEST**  
-**📍 Location: Online**  
-**🎟️ Register Now!**
+**📍 Location: Online and at [CtrlAlt Museum](www.ctrlalt.museum) in [Pavia](https://maps.app.goo.gl/Ay5gfvsnQcKcg7NB7)**
 
 ## 🧭 21:00 - 21:15 User Group Presentation
 
