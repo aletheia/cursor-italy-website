@@ -69,7 +69,10 @@ export default async function LivePage({ params }: LivePageProps) {
         <div className='max-w-7xl mx-auto container-padding'>
           <div className='bg-white rounded-2xl shadow-lg overflow-hidden'>
             {/* YouTube Embed */}
-            <div className='relative w-full' style={{ paddingBottom: '56.25%' }}>
+            <div
+              className='relative w-full'
+              style={{ paddingBottom: '56.25%' }}
+            >
               <iframe
                 className='absolute top-0 left-0 w-full h-full'
                 src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
@@ -87,10 +90,7 @@ export default async function LivePage({ params }: LivePageProps) {
               <p className='text-lg text-gray-600 mb-6'>{event.description}</p>
 
               <div className='flex flex-wrap gap-4'>
-                <Link
-                  href={`/events/${slug}`}
-                  className='btn btn-primary'
-                >
+                <Link href={`/events/${slug}`} className='btn btn-primary'>
                   View Event Details
                 </Link>
                 {event.registrationUrl && (
@@ -136,4 +136,3 @@ export default async function LivePage({ params }: LivePageProps) {
     </div>
   );
 }
-
