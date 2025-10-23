@@ -43,7 +43,7 @@ export default async function LivePage({ params }: LivePageProps) {
   }
 
   // YouTube video ID - extract from URL or set directly
-  const videoId = 'XzguWVEyfas';
+  const videoId = 'mV8gD8q9eP8';
 
   return (
     <div className='min-h-screen bg-gray-50'>
