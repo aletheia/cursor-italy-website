@@ -8,7 +8,7 @@ location: 'Boolean, Viale Cassala 22, 20143, Milano'
 locationUrl: 'https://maps.app.goo.gl/boolean-milano'
 description: 'Kickstart 2026 with a deep dive into vibe coding and AI-assisted code development. Join us for a full night of ideas, networking, and exceptional talks.'
 image: '/images/events/2026-01-20-cursor-meetup/banner@1220x250.jpg'
-eventDetailImage: '/images/events/2026-01-20-cursor-meetup/banner@1920x1080.jpg'
+eventDetailImage: '/images/events/2026-01-20-cursor-meetup/banner@1220x250.jpg'
 published: true
 attendees: 0
 maxAttendees: 100
