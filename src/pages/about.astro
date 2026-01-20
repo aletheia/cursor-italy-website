@@ -1,0 +1,308 @@
+---
+import {
+  Users,
+  Calendar,
+  MapPin,
+  Award,
+  ExternalLink,
+  ArrowRight,
+} from 'lucide-react';
+import { getEntry, render } from 'astro:content';
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/lib/config';
+
+const description = await getEntry('about', 'description');
+const founder = await getEntry('about', 'founder');
+
+const { Content: DescriptionContent } = description ? await render(description) : { Content: null };
+const { Content: FounderContent } = founder ? await render(founder) : { Content: null };
+---
+
+<BaseLayout
+  title='About Us'
+  description='Learn about Cursor Italy, our mission, and our founder Luca Bianchi - Cursor Ambassador.'
+>
+  <div class='min-h-screen'>
+    <!-- Hero Section -->
+    <section class='hero-bg section-padding'>
+      <div class='max-w-7xl mx-auto container-padding'>
+        <div class='text-center space-y-8'>
+          <div class='space-y-4'>
+            <h1 class='text-4xl lg:text-6xl font-bold text-gray-900 leading-tight'>
+              About <span class='gradient-text'>Cursor Italy</span>
+            </h1>
+            <p class='text-xl text-gray-600 max-w-3xl mx-auto'>
+              Building Italy's premier community for AI-powered development,
+              one passionate developer at a time.
+            </p>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class='flex flex-wrap justify-center gap-8'>
+            <div class='flex items-center space-x-2'>
+              <Users className='w-5 h-5 text-cursor-blue' />
+              <span class='font-semibold text-gray-900'>14+ Members</span>
+            </div>
+            <div class='flex items-center space-x-2'>
+              <MapPin className='w-5 h-5 text-cursor-blue' />
+              <span class='font-semibold text-gray-900'>
+                {siteConfig.location}
+              </span>
+            </div>
+            <div class='flex items-center space-x-2'>
+              <Calendar className='w-5 h-5 text-cursor-blue' />
+              <span class='font-semibold text-gray-900'>
+                Founded 2024
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class='section-padding bg-white'>
+      <div class='max-w-4xl mx-auto container-padding'>
+        {DescriptionContent && (
+          <div class='prose-custom'>
+            <DescriptionContent />
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Founder Section -->
+    {founder && (
+      <section class='section-padding bg-gray-50'>
+        <div class='max-w-7xl mx-auto container-padding'>
+          <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+            <!-- Founder Image -->
+            <div class='order-2 lg:order-1'>
+              <div class='relative'>
+                <div class='aspect-[4/3] rounded-2xl overflow-hidden bg-gray-200'>
+                  <div class='w-full h-full bg-milano-gradient flex items-center justify-center'>
+                    <div class='text-center text-white'>
+                      <div class='w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4'>
+                        <Users className='w-12 h-12' />
+                      </div>
+                      <div class='text-lg font-semibold'>
+                        Luca Bianchi
+                      </div>
+                      <div class='text-sm opacity-90'>
+                        Founder & Cursor Ambassador
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Floating Badge -->
+                <div class='absolute -top-4 -right-4 bg-white rounded-2xl shadow-lg p-4 text-center'>
+                  <Award className='w-8 h-8 text-cursor-blue mx-auto mb-2' />
+                  <div class='text-sm font-semibold text-gray-900'>
+                    Cursor
+                  </div>
+                  <div class='text-xs text-gray-600'>Ambassador</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Founder Content -->
+            <div class='order-1 lg:order-2 space-y-6'>
+              <div>
+                <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+                  Meet Our Founder
+                </h2>
+                {FounderContent && (
+                  <div class='prose-custom'>
+                    <FounderContent />
+                  </div>
+                )}
+              </div>
+
+              <div class='flex flex-wrap gap-4'>
+                <a
+                  href={siteConfig.social.linkedin || '#'}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  class='btn btn-primary'
+                >
+                  Connect on LinkedIn
+                  <ExternalLink className='w-4 h-4 ml-2' />
+                </a>
+                <a href='/founder' class='btn btn-secondary'>
+                  Full Bio
+                  <ArrowRight className='w-4 h-4 ml-2' />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Our Values -->
+    <section class='section-padding bg-white'>
+      <div class='max-w-7xl mx-auto container-padding'>
+        <div class='text-center mb-16'>
+          <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+            Our Values
+          </h2>
+          <p class='text-lg text-gray-600 max-w-2xl mx-auto'>
+            The principles that guide our community and shape our events
+          </p>
+        </div>
+
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div class='text-center space-y-4'>
+            <div class='w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto'>
+              <Users className='w-8 h-8 text-blue-600' />
+            </div>
+            <h3 class='text-xl font-semibold text-gray-900'>
+              Inclusive Community
+            </h3>
+            <p class='text-gray-600'>
+              We welcome developers of all skill levels and backgrounds,
+              fostering an environment where everyone can learn and grow.
+            </p>
+          </div>
+
+          <div class='text-center space-y-4'>
+            <div class='w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto'>
+              <Award className='w-8 h-8 text-green-600' />
+            </div>
+            <h3 class='text-xl font-semibold text-gray-900'>
+              Excellence in Learning
+            </h3>
+            <p class='text-gray-600'>
+              We strive to provide high-quality educational content and
+              hands-on experiences that push the boundaries of AI development.
+            </p>
+          </div>
+
+          <div class='text-center space-y-4'>
+            <div class='w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto'>
+              <ExternalLink className='w-8 h-8 text-purple-600' />
+            </div>
+            <h3 class='text-xl font-semibold text-gray-900'>
+              Open Collaboration
+            </h3>
+            <p class='text-gray-600'>
+              We believe in the power of sharing knowledge, collaborating on
+              projects, and building together as a community.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Guidelines -->
+    <section class='section-padding bg-gray-50'>
+      <div class='max-w-4xl mx-auto container-padding text-center'>
+        <div class='space-y-8'>
+          <div>
+            <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+              Community Guidelines
+            </h2>
+            <p class='text-lg text-gray-600'>
+              We maintain a safe, welcoming, and productive environment for
+              all members
+            </p>
+          </div>
+
+          <div class='bg-white rounded-2xl shadow-sm border border-gray-200 p-8'>
+            <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
+              <div class='space-y-4'>
+                <h3 class='text-xl font-semibold text-gray-900 mb-4'>
+                  Our Commitments
+                </h3>
+                <ul class='space-y-2 text-left text-gray-600'>
+                  <li class='flex items-start space-x-2'>
+                    <span class='w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0'></span>
+                    <span>Respectful and inclusive environment</span>
+                  </li>
+                  <li class='flex items-start space-x-2'>
+                    <span class='w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0'></span>
+                    <span>High-quality educational content</span>
+                  </li>
+                  <li class='flex items-start space-x-2'>
+                    <span class='w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0'></span>
+                    <span>Opportunities for all skill levels</span>
+                  </li>
+                  <li class='flex items-start space-x-2'>
+                    <span class='w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0'></span>
+                    <span>Open knowledge sharing</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class='space-y-4'>
+                <h3 class='text-xl font-semibold text-gray-900 mb-4'>
+                  Community Expectations
+                </h3>
+                <ul class='space-y-2 text-left text-gray-600'>
+                  <li class='flex items-start space-x-2'>
+                    <span class='w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0'></span>
+                    <span>Be respectful and professional</span>
+                  </li>
+                  <li class='flex items-start space-x-2'>
+                    <span class='w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0'></span>
+                    <span>Share knowledge and help others</span>
+                  </li>
+                  <li class='flex items-start space-x-2'>
+                    <span class='w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0'></span>
+                    <span>Follow event guidelines</span>
+                  </li>
+                  <li class='flex items-start space-x-2'>
+                    <span class='w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0'></span>
+                    <span>Contribute positively to discussions</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class='mt-8 pt-8 border-t border-gray-200'>
+              <a href='/code-of-conduct' class='btn btn-primary'>
+                Read Full Code of Conduct
+                <ArrowRight className='w-4 h-4 ml-2' />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Join CTA -->
+    <section class='section-padding bg-white'>
+      <div class='max-w-4xl mx-auto container-padding text-center'>
+        <div class='space-y-8'>
+          <div>
+            <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+              Become Part of Our Story
+            </h2>
+            <p class='text-lg text-gray-600'>
+              Join us in building the future of AI-powered development in
+              Italy
+            </p>
+          </div>
+
+          <div class='flex flex-wrap justify-center gap-4'>
+            <a
+              href={siteConfig.social.meetup || '#'}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='btn btn-primary btn-lg'
+            >
+              <Users className='w-5 h-5 mr-2' />
+              Join Community
+            </a>
+            <a href='/events' class='btn btn-secondary btn-lg'>
+              <Calendar className='w-5 h-5 mr-2' />
+              Attend Events
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

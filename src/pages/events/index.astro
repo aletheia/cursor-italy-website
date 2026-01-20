@@ -1,0 +1,345 @@
+---
+import { Calendar, Clock, Plus } from 'lucide-react';
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import EventCard from '@/components/EventCard.astro';
+import { siteConfig } from '@/lib/config';
+
+const allEvents = await getCollection('events', ({ data }) => data.published !== false);
+// Compare dates only (not time) - set time to start of day for fair comparison
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const upcomingEvents = allEvents
+  .filter(event => {
+    const eventDate = new Date(event.data.date);
+    eventDate.setHours(0, 0, 0, 0);
+    return eventDate >= today;
+  })
+  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+
+const pastEvents = allEvents
+  .filter(event => {
+    const eventDate = new Date(event.data.date);
+    eventDate.setHours(0, 0, 0, 0);
+    return eventDate < today;
+  })
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<BaseLayout
+  title='Events'
+  description='Join our upcoming events and explore past meetups, workshops, and talks.'
+>
+  <div class='min-h-screen'>
+    <!-- Hero Section -->
+    <section class='hero-bg section-padding'>
+      <div class='max-w-7xl mx-auto container-padding'>
+        <div class='text-center space-y-8'>
+          <div class='space-y-4'>
+            <h1 class='text-4xl lg:text-6xl font-bold text-gray-900 leading-tight'>
+              <span class='gradient-text'>Events</span>
+            </h1>
+            <p class='text-xl text-gray-600 max-w-3xl mx-auto'>
+              Join us for exciting meetups, workshops, and talks about
+              AI-powered development with Cursor
+            </p>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class='flex flex-wrap justify-center gap-8'>
+            <div class='flex items-center space-x-2'>
+              <Calendar className='w-5 h-5 text-cursor-blue' />
+              <span class='font-semibold text-gray-900'>
+                Monthly Meetups
+              </span>
+            </div>
+            <div class='flex items-center space-x-2'>
+              <Clock className='w-5 h-5 text-cursor-blue' />
+              <span class='font-semibold text-gray-900'>
+                Usually 18:30 CEST
+              </span>
+            </div>
+            <div class='flex items-center space-x-2'>
+              <Plus className='w-5 h-5 text-cursor-blue' />
+              <span class='font-semibold text-gray-900'>Open CFP</span>
+            </div>
+          </div>
+
+          <!-- Call to Action -->
+          <div class='flex flex-wrap justify-center gap-4'>
+            <a
+              href={siteConfig.social.sessionize || '#'}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='btn btn-primary'
+            >
+              <Plus className='w-4 h-4 mr-2' />
+              Propose a Talk
+            </a>
+            <a
+              href={siteConfig.social.meetup || '#'}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='btn btn-secondary'
+            >
+              Join Community
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    {upcomingEvents.length > 0 ? (
+      <section class='section-padding bg-white'>
+        <div class='max-w-7xl mx-auto container-padding'>
+          <div class='text-center mb-12'>
+            <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+              Upcoming Events
+            </h2>
+            <p class='text-lg text-gray-600'>
+              Don't miss these exciting opportunities to learn and connect
+            </p>
+          </div>
+
+          <div class='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+            {upcomingEvents.map((event, index) => (
+              <EventCard
+                event={event}
+                variant={index === 0 ? 'featured' : 'default'}
+                showContent={true}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+    ) : (
+      <section class='section-padding bg-white'>
+        <div class='max-w-4xl mx-auto container-padding text-center'>
+          <div class='space-y-6'>
+            <div class='w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto'>
+              <Calendar className='w-8 h-8 text-gray-400' />
+            </div>
+            <div>
+              <h2 class='text-2xl font-bold text-gray-900 mb-2'>
+                No Upcoming Events Yet
+              </h2>
+              <p class='text-gray-600 mb-6'>
+                We're planning our next amazing event! Stay tuned for updates
+                or join our community to be the first to know.
+              </p>
+            </div>
+            <div class='flex flex-wrap justify-center gap-4'>
+              <a
+                href={siteConfig.social.meetup || '#'}
+                target='_blank'
+                rel='noopener noreferrer'
+                class='btn btn-primary'
+              >
+                Join Community for Updates
+              </a>
+              <a
+                href={siteConfig.social.sessionize || '#'}
+                target='_blank'
+                rel='noopener noreferrer'
+                class='btn btn-secondary'
+              >
+                Propose a Talk
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Past Events -->
+    {pastEvents.length > 0 && (
+      <section class='section-padding bg-gray-50'>
+        <div class='max-w-7xl mx-auto container-padding'>
+          <div class='text-center mb-12'>
+            <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+              Past Events
+            </h2>
+            <p class='text-lg text-gray-600'>
+              Explore what we've accomplished together
+            </p>
+          </div>
+
+          <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {pastEvents.map(event => (
+              <EventCard event={event} variant='compact' />
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Speaking Opportunities -->
+    <section class='section-padding bg-white'>
+      <div class='max-w-7xl mx-auto container-padding'>
+        <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+          <!-- Content -->
+          <div class='space-y-6'>
+            <div>
+              <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+                Want to Speak?
+              </h2>
+              <p class='text-lg text-gray-600 mb-6'>
+                We welcome speakers from all backgrounds and experience
+                levels. Share your knowledge with our passionate community.
+              </p>
+            </div>
+
+            <div class='space-y-4'>
+              <div class='flex items-start space-x-4'>
+                <div class='w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
+                  <span class='text-green-600 text-xs font-bold'>✓</span>
+                </div>
+                <div>
+                  <h3 class='font-semibold text-gray-900 mb-1'>
+                    Open to All Levels
+                  </h3>
+                  <p class='text-gray-600 text-sm'>
+                    Whether you're a beginner or expert, we value diverse
+                    perspectives and experiences.
+                  </p>
+                </div>
+              </div>
+
+              <div class='flex items-start space-x-4'>
+                <div class='w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
+                  <span class='text-blue-600 text-xs font-bold'>✓</span>
+                </div>
+                <div>
+                  <h3 class='font-semibold text-gray-900 mb-1'>
+                    Diverse Topics
+                  </h3>
+                  <p class='text-gray-600 text-sm'>
+                    AI development, Cursor tips, product management, design,
+                    entrepreneurship, and more.
+                  </p>
+                </div>
+              </div>
+
+              <div class='flex items-start space-x-4'>
+                <div class='w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
+                  <span class='text-purple-600 text-xs font-bold'>✓</span>
+                </div>
+                <div>
+                  <h3 class='font-semibold text-gray-900 mb-1'>
+                    Supportive Environment
+                  </h3>
+                  <p class='text-gray-600 text-sm'>
+                    Our community is friendly and supportive, perfect for
+                    first-time speakers.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class='flex flex-wrap gap-4'>
+              <a
+                href={siteConfig.social.sessionize || '#'}
+                target='_blank'
+                rel='noopener noreferrer'
+                class='btn btn-primary'
+              >
+                Submit Your Proposal
+                <Plus className='w-4 h-4 ml-2' />
+              </a>
+              <a href='/contact' class='btn btn-secondary'>
+                Contact Organizers
+              </a>
+            </div>
+          </div>
+
+          <!-- Visual -->
+          <div class='relative'>
+            <div class='bg-milano-gradient rounded-2xl p-8 text-center text-white'>
+              <div class='space-y-6'>
+                <div class='w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto'>
+                  <Plus className='w-8 h-8' />
+                </div>
+                <div>
+                  <h3 class='text-xl font-bold mb-2'>
+                    Share Your Expertise
+                  </h3>
+                  <p class='text-white/90 text-sm mb-4'>
+                    Join our lineup of amazing speakers and help shape the
+                    future of AI development in Italy.
+                  </p>
+                </div>
+                <div class='space-y-3 text-left text-sm'>
+                  <div class='flex items-center space-x-3'>
+                    <div class='w-2 h-2 bg-white rounded-full'></div>
+                    <span>Open Discussion</span>
+                  </div>
+                  <div class='flex items-center space-x-3'>
+                    <div class='w-2 h-2 bg-white rounded-full'></div>
+                    <span>Full presentations (20-30 minutes)</span>
+                  </div>
+                  <div class='flex items-center space-x-3'>
+                    <div class='w-2 h-2 bg-white rounded-full'></div>
+                    <span>Live coding sessions</span>
+                  </div>
+                  <div class='flex items-center space-x-3'>
+                    <div class='w-2 h-2 bg-white rounded-full'></div>
+                    <span>Hands-on sessions</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class='section-padding bg-gray-50'>
+      <div class='max-w-4xl mx-auto container-padding text-center'>
+        <div class='space-y-8'>
+          <div>
+            <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+              Never Miss an Event
+            </h2>
+            <p class='text-lg text-gray-600'>
+              Join our community to get notified about upcoming events,
+              workshops, and special announcements
+            </p>
+          </div>
+
+          <div class='flex flex-wrap justify-center gap-4'>
+            <a
+              href={siteConfig.social.meetup || '#'}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='btn btn-primary btn-lg'
+            >
+              Join on Meetup
+            </a>
+            <a
+              href={siteConfig.social.linkedin || '#'}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='btn btn-secondary btn-lg'
+            >
+              Follow on LinkedIn
+            </a>
+          </div>
+
+          <div class='text-sm text-gray-500'>
+            Or stay updated on{' '}
+            <a
+              href={siteConfig.social.luma || '#'}
+              class='text-cursor-blue hover:text-blue-700 transition-colors duration-200'
+            >
+              Lu.ma
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

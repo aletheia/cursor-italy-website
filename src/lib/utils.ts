@@ -89,77 +89,6 @@ export function generateSlug(text: string): string {
 }
 
 /**
- * Debounce function
- */
-export function debounce<T extends (...args: any[]) => any>(
-  func: T,
-  wait: number
-): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout;
-
-  return (...args: Parameters<T>) => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(...args), wait);
-  };
-}
-
-/**
- * Throttle function
- */
-export function throttle<T extends (...args: any[]) => any>(
-  func: T,
-  limit: number
-): (...args: Parameters<T>) => void {
-  let inThrottle: boolean;
-
-  return (...args: Parameters<T>) => {
-    if (!inThrottle) {
-      func(...args);
-      inThrottle = true;
-      setTimeout(() => (inThrottle = false), limit);
-    }
-  };
-}
-
-/**
- * Check if element is in viewport
- */
-export function isInViewport(element: Element): boolean {
-  const rect = element.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
-
-/**
- * Copy text to clipboard
- */
-export async function copyToClipboard(text: string): Promise<boolean> {
-  try {
-    if (navigator.clipboard) {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } else {
-      // Fallback for older browsers
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      return true;
-    }
-  } catch (error) {
-    console.error('Failed to copy text:', error);
-    return false;
-  }
-}
-
-/**
  * Validate email format
  */
 export function isValidEmail(email: string): boolean {
@@ -184,36 +113,4 @@ export function getInitials(name: string): string {
     .join('')
     .toUpperCase()
     .slice(0, 2);
-}
-
-/**
- * Generate random ID
- */
-export function generateId(length = 8): string {
-  const chars =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
-  }
-  return result;
-}
-
-/**
- * Deep clone object
- */
-export function deepClone<T>(obj: T): T {
-  if (obj === null || typeof obj !== 'object') return obj;
-  if (obj instanceof Date) return new Date(obj.getTime()) as T;
-  if (obj instanceof Array) return obj.map(item => deepClone(item)) as T;
-  if (typeof obj === 'object') {
-    const clonedObj = {} as T;
-    for (const key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        clonedObj[key] = deepClone(obj[key]);
-      }
-    }
-    return clonedObj;
-  }
-  return obj;
 }

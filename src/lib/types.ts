@@ -1,22 +1,4 @@
-export interface SiteConfig {
-  title: string;
-  description: string;
-  url: string;
-  location: string;
-  organizer: string;
-  images: {
-    ogImage: string;
-    heroImage: string;
-    defaultEventImage: string;
-  };
-  social: {
-    meetup?: string;
-    linkedin?: string;
-    luma?: string;
-    sessionize?: string;
-  };
-}
-
+// Navigation types
 export interface NavigationItem {
   name: string;
   href: string;
@@ -28,30 +10,7 @@ export interface FooterSection {
   links: NavigationItem[];
 }
 
-export interface Event {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  startTime: string;
-  endTime?: string;
-  timezone?: string;
-  location: string;
-  locationUrl?: string;
-  address: string;
-  image: string;
-  eventDetailImage?: string;
-  content: string;
-  speakers: Speaker[];
-  sponsors: Sponsor[];
-  registrationUrl?: string;
-  attendees?: number;
-  maxAttendees?: number;
-  tags?: string[];
-  isUpcoming: boolean;
-  isPast: boolean;
-}
-
+// Speaker type
 export interface Speaker {
   name: string;
   topic: string;
@@ -65,6 +24,7 @@ export interface Speaker {
   };
 }
 
+// Sponsor type (for components that don't use content collections)
 export interface Sponsor {
   slug: string;
   name: string;
@@ -72,26 +32,8 @@ export interface Sponsor {
   url: string;
   tier: 'main' | 'platinum' | 'gold' | 'silver' | 'bronze' | 'community';
   description: string;
-  content: string;
+  content?: string;
   order?: number;
-}
-
-export interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  author: string;
-  content: string;
-  tags: string[];
-}
-
-export interface AboutPage {
-  slug: string;
-  title: string;
-  description: string;
-  lastUpdated: string;
-  content: string;
 }
 
 // Utility types
@@ -101,7 +43,6 @@ export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 // Component props types
 export interface BaseComponentProps {
   className?: string;
-  children?: React.ReactNode;
 }
 
 export interface CardProps extends BaseComponentProps {
@@ -119,24 +60,6 @@ export interface ButtonProps extends BaseComponentProps {
   external?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  onClick?: () => void;
-}
-
-// API response types
-export interface ApiResponse<T> {
-  data: T;
-  error?: string;
-  message?: string;
-}
-
-export interface PaginatedResponse<T> {
-  data: T[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
 }
 
 // Form types
@@ -165,30 +88,8 @@ export interface SeoProps {
   tags?: string[];
 }
 
-// Error types
-export interface AppError {
-  code: string;
-  message: string;
-  details?: Record<string, unknown>;
-}
-
 // Loading states
 export type LoadingState = 'idle' | 'loading' | 'success' | 'error';
 
 // Theme types
 export type Theme = 'light' | 'dark' | 'system';
-
-// Analytics types
-export interface AnalyticsEvent {
-  action: string;
-  category: string;
-  label?: string;
-  value?: number;
-}
-
-// Cache types
-export interface CacheConfig {
-  maxAge: number;
-  staleWhileRevalidate?: number;
-  tags?: string[];
-}

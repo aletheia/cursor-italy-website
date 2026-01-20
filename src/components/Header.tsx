@@ -1,9 +1,7 @@
-'use client';
+import { useState } from 'react';
 
 import clsx from 'clsx';
 import { Menu, X, Calendar, Users } from 'lucide-react';
-import Link from 'next/link';
-import { useState } from 'react';
 
 import { navigation, siteConfig } from '@/lib/config';
 
@@ -17,7 +15,7 @@ export default function Header() {
       <div className='max-w-7xl mx-auto container-padding'>
         <div className='flex items-center justify-between h-16'>
           {/* Logo */}
-          <Link href='/' className='flex items-center space-x-2'>
+          <a href='/' className='flex items-center space-x-2'>
             <div className='w-8 h-8 bg-milano-gradient rounded-lg flex items-center justify-center'>
               <span className='text-white font-bold text-sm'>C</span>
             </div>
@@ -29,24 +27,24 @@ export default function Header() {
                 {siteConfig.location}
               </span>
             </div>
-          </Link>
+          </a>
 
           {/* Desktop Navigation */}
           <nav className='hidden md:flex items-center space-x-8'>
             {navigation.map(item => (
-              <Link
+              <a
                 key={item.name}
                 href={item.href}
                 className='text-gray-700 hover:text-cursor-blue font-medium transition-colors duration-200'
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
           </nav>
 
           {/* Desktop CTA Buttons */}
           <div className='hidden md:flex items-center space-x-4'>
-            <Link
+            <a
               href={siteConfig.social.meetup || '#'}
               target='_blank'
               rel='noopener noreferrer'
@@ -54,11 +52,11 @@ export default function Header() {
             >
               <Users className='w-4 h-4 mr-2' />
               Join Community
-            </Link>
-            <Link href='/events' className='btn btn-primary btn-sm'>
+            </a>
+            <a href='/events' className='btn btn-primary btn-sm'>
               <Calendar className='w-4 h-4 mr-2' />
               Next Event
-            </Link>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -85,19 +83,19 @@ export default function Header() {
         >
           <nav className='flex flex-col space-y-4 pt-4 border-t border-gray-200'>
             {navigation.map(item => (
-              <Link
+              <a
                 key={item.name}
                 href={item.href}
                 className='text-gray-700 hover:text-cursor-blue font-medium transition-colors duration-200'
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
 
             {/* Mobile CTA Buttons */}
             <div className='flex flex-col space-y-2 pt-4'>
-              <Link
+              <a
                 href={siteConfig.social.meetup || '#'}
                 target='_blank'
                 rel='noopener noreferrer'
@@ -106,15 +104,15 @@ export default function Header() {
               >
                 <Users className='w-4 h-4 mr-2' />
                 Join Community
-              </Link>
-              <Link
+              </a>
+              <a
                 href='/events'
                 className='btn btn-primary btn-sm justify-center'
                 onClick={() => setIsMenuOpen(false)}
               >
                 <Calendar className='w-4 h-4 mr-2' />
                 Next Event
-              </Link>
+              </a>
             </div>
           </nav>
         </div>

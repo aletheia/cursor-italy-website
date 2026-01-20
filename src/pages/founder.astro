@@ -1,0 +1,341 @@
+---
+import {
+  Award,
+  ExternalLink,
+  MessageCircle,
+  Users,
+  Calendar,
+  Code,
+  ArrowRight,
+} from 'lucide-react';
+import { getEntry, render } from 'astro:content';
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/lib/config';
+
+const founder = await getEntry('about', 'founder');
+const { Content: FounderContent } = founder ? await render(founder) : { Content: null };
+---
+
+<BaseLayout
+  title='Meet Our Founder - Luca Bianchi'
+  description="Learn about Luca Bianchi, founder of Cursor Italy and Cursor Ambassador, his vision, and journey in building Italy's AI development community."
+>
+  <div class='min-h-screen'>
+    <!-- Hero Section -->
+    <section class='hero-bg section-padding'>
+      <div class='max-w-7xl mx-auto container-padding'>
+        <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+          <!-- Content -->
+          <div class='space-y-8'>
+            <div class='space-y-4'>
+              <div class='inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200'>
+                <Award className='w-4 h-4 text-cursor-blue mr-2' />
+                <span class='text-sm font-medium text-gray-700'>
+                  Cursor Ambassador
+                </span>
+              </div>
+
+              <h1 class='text-4xl lg:text-6xl font-bold text-gray-900 leading-tight'>
+                <span class='gradient-text'>Luca Bianchi</span>
+              </h1>
+
+              <p class='text-xl text-gray-600'>
+                Founder of Cursor Italy, Cursor Ambassador, and passionate
+                advocate for AI-powered development in Italy.
+              </p>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class='grid grid-cols-2 gap-6'>
+              <div class='bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200'>
+                <div class='flex items-center space-x-3'>
+                  <Users className='w-8 h-8 text-cursor-blue' />
+                  <div>
+                    <div class='font-semibold text-gray-900'>14+</div>
+                    <div class='text-sm text-gray-600'>Community Members</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class='bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-gray-200'>
+                <div class='flex items-center space-x-3'>
+                  <Calendar className='w-8 h-8 text-cursor-blue' />
+                  <div>
+                    <div class='font-semibold text-gray-900'>2024</div>
+                    <div class='text-sm text-gray-600'>Founded</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class='flex flex-wrap gap-4'>
+              <a
+                href={siteConfig.social.linkedin || '#'}
+                target='_blank'
+                rel='noopener noreferrer'
+                class='btn btn-primary'
+              >
+                Connect on LinkedIn
+                <ExternalLink className='w-4 h-4 ml-2' />
+              </a>
+              <a
+                href={siteConfig.social.meetup || '#'}
+                target='_blank'
+                rel='noopener noreferrer'
+                class='btn btn-secondary'
+              >
+                Join Community
+                <Users className='w-4 h-4 ml-2' />
+              </a>
+            </div>
+          </div>
+
+          <!-- Founder Visual -->
+          <div class='relative'>
+            <div class='relative z-10'>
+              <div class='aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl'>
+                <div class='w-full h-full bg-milano-gradient flex items-center justify-center'>
+                  <div class='text-center text-white'>
+                    <div class='w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6'>
+                      <Users className='w-16 h-16' />
+                    </div>
+                    <div class='text-2xl font-bold mb-2'>Luca Bianchi</div>
+                    <div class='text-lg opacity-90 mb-4'>Founder & Ambassador</div>
+                    <div class='text-sm opacity-75'>Building Italy's AI Future</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Elements -->
+              <div class='absolute -top-6 -right-6 bg-white rounded-2xl shadow-lg p-4 text-center'>
+                <Award className='w-8 h-8 text-cursor-blue mx-auto mb-2' />
+                <div class='text-sm font-semibold text-gray-900'>Cursor</div>
+                <div class='text-xs text-gray-600'>Ambassador</div>
+              </div>
+
+              <div class='absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-lg p-4 text-center'>
+                <Code className='w-8 h-8 text-purple-600 mx-auto mb-2' />
+                <div class='text-sm font-semibold text-gray-900'>AI</div>
+                <div class='text-xs text-gray-600'>Advocate</div>
+              </div>
+            </div>
+
+            <!-- Background Decoration -->
+            <div class='absolute inset-0 -z-10'>
+              <div class='absolute top-1/4 right-1/4 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse'></div>
+              <div class='absolute bottom-1/4 left-1/4 w-32 h-32 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse animation-delay-200'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class='section-padding bg-white'>
+      <div class='max-w-4xl mx-auto container-padding'>
+        {FounderContent && (
+          <div class='prose-custom'>
+            <FounderContent />
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Achievements & Impact -->
+    <section class='section-padding bg-gray-50'>
+      <div class='max-w-7xl mx-auto container-padding'>
+        <div class='text-center mb-16'>
+          <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+            Impact & Achievements
+          </h2>
+          <p class='text-lg text-gray-600 max-w-2xl mx-auto'>
+            Luca's contributions to the Italian tech community and AI development ecosystem
+          </p>
+        </div>
+
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div class='bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-center'>
+            <div class='w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4'>
+              <Users className='w-6 h-6 text-blue-600' />
+            </div>
+            <h3 class='text-lg font-semibold text-gray-900 mb-2'>Community Builder</h3>
+            <p class='text-gray-600 text-sm mb-4'>
+              Founded Cursor Italy and built a thriving community of 14+ passionate developers in Milano
+            </p>
+            <div class='text-2xl font-bold text-blue-600'>14+</div>
+            <div class='text-xs text-gray-500'>Active Members</div>
+          </div>
+
+          <div class='bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-center'>
+            <div class='w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4'>
+              <MessageCircle className='w-6 h-6 text-green-600' />
+            </div>
+            <h3 class='text-lg font-semibold text-gray-900 mb-2'>Speaker & Educator</h3>
+            <p class='text-gray-600 text-sm mb-4'>
+              Regular speaker on AI development, product specification, and community building
+            </p>
+            <div class='text-2xl font-bold text-green-600'>Expert</div>
+            <div class='text-xs text-gray-500'>AI Development</div>
+          </div>
+
+          <div class='bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-center'>
+            <div class='w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4'>
+              <Award className='w-6 h-6 text-purple-600' />
+            </div>
+            <h3 class='text-lg font-semibold text-gray-900 mb-2'>Cursor Ambassador</h3>
+            <p class='text-gray-600 text-sm mb-4'>
+              Official representative of Cursor in Italy, promoting AI-powered development tools
+            </p>
+            <div class='text-2xl font-bold text-purple-600'>Official</div>
+            <div class='text-xs text-gray-500'>Ambassador</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class='section-padding bg-white'>
+      <div class='max-w-7xl mx-auto container-padding'>
+        <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+          <div class='space-y-6'>
+            <div>
+              <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+                Vision for the Future
+              </h2>
+              <p class='text-lg text-gray-600 mb-6'>
+                Luca envisions an Italy where every developer has access to
+                cutting-edge AI tools and a supportive community to accelerate
+                their growth and innovation.
+              </p>
+            </div>
+
+            <div class='space-y-4'>
+              <div class='flex items-start space-x-4'>
+                <div class='w-6 h-6 bg-cursor-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
+                  <span class='text-white text-xs font-bold'>1</span>
+                </div>
+                <div>
+                  <h3 class='font-semibold text-gray-900 mb-1'>Democratize AI Development</h3>
+                  <p class='text-gray-600 text-sm'>
+                    Make advanced AI development tools accessible to developers across Italy.
+                  </p>
+                </div>
+              </div>
+
+              <div class='flex items-start space-x-4'>
+                <div class='w-6 h-6 bg-cursor-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
+                  <span class='text-white text-xs font-bold'>2</span>
+                </div>
+                <div>
+                  <h3 class='font-semibold text-gray-900 mb-1'>Foster Innovation</h3>
+                  <p class='text-gray-600 text-sm'>
+                    Create an environment where developers can experiment and build innovative solutions.
+                  </p>
+                </div>
+              </div>
+
+              <div class='flex items-start space-x-4'>
+                <div class='w-6 h-6 bg-cursor-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1'>
+                  <span class='text-white text-xs font-bold'>3</span>
+                </div>
+                <div>
+                  <h3 class='font-semibold text-gray-900 mb-1'>Build Community</h3>
+                  <p class='text-gray-600 text-sm'>
+                    Connect passionate developers across Italy to share knowledge and grow together.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='relative'>
+            <div class='bg-milano-gradient rounded-2xl p-8 text-center text-white'>
+              <div class='space-y-6'>
+                <div class='w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto'>
+                  <Code className='w-8 h-8' />
+                </div>
+                <div>
+                  <h3 class='text-xl font-bold mb-2'>The Future is AI-Powered</h3>
+                  <p class='text-white/90 text-sm'>
+                    "We're not just learning to use AI tools—we're building the future of development itself."
+                  </p>
+                </div>
+                <div class='text-xs opacity-75'>- Luca Bianchi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class='section-padding bg-gray-50'>
+      <div class='max-w-4xl mx-auto container-padding text-center'>
+        <div class='space-y-8'>
+          <div>
+            <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+              Join Luca's Vision
+            </h2>
+            <p class='text-lg text-gray-600'>
+              Be part of the movement that's shaping the future of AI development in Italy
+            </p>
+          </div>
+
+          <div class='grid grid-cols-1 md:grid-cols-2 gap-6'>
+            <div class='bg-white rounded-2xl shadow-sm border border-gray-200 p-6'>
+              <div class='space-y-4'>
+                <Users className='w-8 h-8 text-cursor-blue mx-auto' />
+                <h3 class='text-lg font-semibold text-gray-900'>Join the Community</h3>
+                <p class='text-gray-600 text-sm'>
+                  Connect with fellow developers and be part of our growing community.
+                </p>
+                <a
+                  href={siteConfig.social.meetup || '#'}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  class='btn btn-primary w-full'
+                >
+                  Join on Meetup
+                  <ExternalLink className='w-4 h-4 ml-2' />
+                </a>
+              </div>
+            </div>
+
+            <div class='bg-white rounded-2xl shadow-sm border border-gray-200 p-6'>
+              <div class='space-y-4'>
+                <MessageCircle className='w-8 h-8 text-cursor-blue mx-auto' />
+                <h3 class='text-lg font-semibold text-gray-900'>Speak at an Event</h3>
+                <p class='text-gray-600 text-sm'>
+                  Share your expertise through our open CFP system.
+                </p>
+                <a
+                  href={siteConfig.social.sessionize || '#'}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  class='btn btn-secondary w-full'
+                >
+                  Submit Proposal
+                  <ArrowRight className='w-4 h-4 ml-2' />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class='pt-8'>
+            <p class='text-sm text-gray-500'>
+              Want to connect directly with Luca?{' '}
+              <a
+                href={siteConfig.social.linkedin || '#'}
+                class='text-cursor-blue hover:text-blue-700 transition-colors duration-200'
+              >
+                Find him on LinkedIn
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

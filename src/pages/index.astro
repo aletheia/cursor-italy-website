@@ -1,0 +1,383 @@
+---
+import {
+  ArrowRight,
+  Code,
+  Users,
+  Zap,
+  Calendar,
+  MessageCircle,
+  Rocket,
+} from 'lucide-react';
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import EventCard from '@/components/EventCard.astro';
+import Hero from '@/components/Hero.astro';
+import SponsorGrid from '@/components/SponsorGrid.astro';
+import { siteConfig } from '@/lib/config';
+
+const allEvents = await getCollection('events', ({ data }) => data.published !== false);
+// Compare dates only (not time) - set time to start of day for fair comparison
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+const upcomingEvents = allEvents
+  .filter(event => {
+    const eventDate = new Date(event.data.date);
+    eventDate.setHours(0, 0, 0, 0);
+    return eventDate >= today;
+  })
+  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+
+const sponsors = await getCollection('sponsors');
+const sortedSponsors = sponsors.sort((a, b) => (a.data.order || 999) - (b.data.order || 999));
+
+const nextEvent = upcomingEvents[0];
+const featuredEvents = upcomingEvents.slice(0, 3);
+---
+
+<BaseLayout
+  title='Cursor Italy - Milano AI Development Community'
+  description="Join Italy's premier community for AI-powered development with Cursor. Monthly meetups, workshops, and networking in Milano."
+>
+  <div class='min-h-screen'>
+    <!-- Hero Section -->
+    <Hero
+      nextEvent={nextEvent
+        ? {
+            title: nextEvent.data.title,
+            date: nextEvent.data.date,
+            location: nextEvent.data.location,
+            registrationUrl: nextEvent.data.registrationUrl,
+          }
+        : undefined}
+      memberCount={14}
+    />
+
+    <!-- What We Do Section -->
+    <section class='section-padding bg-white'>
+      <div class='max-w-7xl mx-auto container-padding'>
+        <div class='text-center mb-16'>
+          <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+            What We Do
+          </h2>
+          <p class='text-lg text-gray-600 max-w-2xl mx-auto'>
+            We bring together Italy's most passionate developers to explore
+            the future of AI-powered development
+          </p>
+        </div>
+
+        <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <!-- Feature 1 -->
+          <div class='text-center space-y-4'>
+            <div class='w-16 h-16 bg-milano-gradient rounded-2xl flex items-center justify-center mx-auto'>
+              <Code className='w-8 h-8 text-white' />
+            </div>
+            <h3 class='text-xl font-semibold text-gray-900'>
+              Live Coding Sessions
+            </h3>
+            <p class='text-gray-600'>
+              Watch experts build real applications with Cursor's AI
+              capabilities, from idea to deployment in minutes.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class='text-center space-y-4'>
+            <div class='w-16 h-16 bg-milano-gradient rounded-2xl flex items-center justify-center mx-auto'>
+              <Users className='w-8 h-8 text-white' />
+            </div>
+            <h3 class='text-xl font-semibold text-gray-900'>
+              Community Networking
+            </h3>
+            <p class='text-gray-600'>
+              Connect with like-minded developers, share experiences, and
+              build lasting professional relationships.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class='text-center space-y-4'>
+            <div class='w-16 h-16 bg-milano-gradient rounded-2xl flex items-center justify-center mx-auto'>
+              <Zap className='w-8 h-8 text-white' />
+            </div>
+            <h3 class='text-xl font-semibold text-gray-900'>
+              AI-Powered Workshops
+            </h3>
+            <p class='text-gray-600'>
+              Hands-on workshops where you'll learn to leverage AI for faster
+              development and better products.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Events Section -->
+    {featuredEvents.length > 0 && (
+      <section class='section-padding bg-gray-50'>
+        <div class='max-w-7xl mx-auto container-padding'>
+          <div class='flex items-center justify-between mb-12'>
+            <div>
+              <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+                Upcoming Events
+              </h2>
+              <p class='text-lg text-gray-600'>
+                Don't miss these exciting opportunities to learn and connect
+              </p>
+            </div>
+            <a href='/events' class='btn btn-secondary hidden sm:flex'>
+              All Events
+              <ArrowRight className='w-4 h-4 ml-2' />
+            </a>
+          </div>
+
+          <div class='grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8'>
+            {featuredEvents.map((event, index) => (
+              <EventCard
+                event={event}
+                variant={index === 0 ? 'featured' : 'default'}
+              />
+            ))}
+          </div>
+
+          <div class='text-center mt-12 sm:hidden'>
+            <a href='/events' class='btn btn-secondary'>
+              View All Events
+              <ArrowRight className='w-4 h-4 ml-2' />
+            </a>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Community Stats -->
+    <section class='section-padding bg-white'>
+      <div class='max-w-7xl mx-auto container-padding'>
+        <div class='text-center mb-16'>
+          <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+            Growing Community
+          </h2>
+          <p class='text-lg text-gray-600 max-w-2xl mx-auto'>
+            Join a thriving ecosystem of developers, creators, and innovators
+            across Italy
+          </p>
+        </div>
+
+        <div class='grid grid-cols-2 lg:grid-cols-4 gap-8'>
+          <div class='text-center'>
+            <div class='text-4xl lg:text-5xl font-bold gradient-text mb-2'>
+              14+
+            </div>
+            <div class='text-gray-600'>Active Members</div>
+          </div>
+          <div class='text-center'>
+            <div class='text-4xl lg:text-5xl font-bold gradient-text mb-2'>
+              1
+            </div>
+            <div class='text-gray-600'>Cities Covered</div>
+          </div>
+          <div class='text-center'>
+            <div class='text-4xl lg:text-5xl font-bold gradient-text mb-2'>
+              Monthly
+            </div>
+            <div class='text-gray-600'>Events</div>
+          </div>
+          <div class='text-center'>
+            <div class='text-4xl lg:text-5xl font-bold gradient-text mb-2'>
+              100%
+            </div>
+            <div class='text-gray-600'>AI-Powered</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Join Section -->
+    <section class='section-padding bg-gray-50'>
+      <div class='max-w-7xl mx-auto container-padding'>
+        <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+          <!-- Content -->
+          <div class='space-y-8'>
+            <div>
+              <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+                Why Join Cursor Italy?
+              </h2>
+              <p class='text-lg text-gray-600'>
+                Be part of Italy's most innovative developer community and
+                stay ahead in the AI revolution.
+              </p>
+            </div>
+
+            <div class='space-y-6'>
+              <div class='flex items-start space-x-4'>
+                <div class='w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0'>
+                  <Rocket className='w-5 h-5 text-green-600' />
+                </div>
+                <div>
+                  <h3 class='font-semibold text-gray-900 mb-1'>
+                    Learn from Experts
+                  </h3>
+                  <p class='text-gray-600'>
+                    Get insights from industry leaders and Cursor ambassadors
+                    like Luca Bianchi.
+                  </p>
+                </div>
+              </div>
+
+              <div class='flex items-start space-x-4'>
+                <div class='w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0'>
+                  <Calendar className='w-5 h-5 text-blue-600' />
+                </div>
+                <div>
+                  <h3 class='font-semibold text-gray-900 mb-1'>
+                    Regular Events
+                  </h3>
+                  <p class='text-gray-600'>
+                    Monthly meetups with workshops, talks, and networking
+                    opportunities.
+                  </p>
+                </div>
+              </div>
+
+              <div class='flex items-start space-x-4'>
+                <div class='w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0'>
+                  <MessageCircle className='w-5 h-5 text-purple-600' />
+                </div>
+                <div>
+                  <h3 class='font-semibold text-gray-900 mb-1'>
+                    Speaking Opportunities
+                  </h3>
+                  <p class='text-gray-600'>
+                    Share your expertise through our open CFP system powered
+                    by Sessionize.
+                  </p>
+                </div>
+              </div>
+
+              <div class='flex items-start space-x-4'>
+                <div class='w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0'>
+                  <Users className='w-5 h-5 text-yellow-600' />
+                </div>
+                <div>
+                  <h3 class='font-semibold text-gray-900 mb-1'>
+                    Vibrant Network
+                  </h3>
+                  <p class='text-gray-600'>
+                    Connect with developers, designers, and entrepreneurs
+                    across Italy.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class='flex flex-wrap gap-4'>
+              <a
+                href={siteConfig.social.meetup || '#'}
+                target='_blank'
+                rel='noopener noreferrer'
+                class='btn btn-primary'
+              >
+                Join on Meetup
+                <ArrowRight className='w-4 h-4 ml-2' />
+              </a>
+              <a href='/about' class='btn btn-secondary'>
+                Learn More
+              </a>
+            </div>
+          </div>
+
+          <!-- Image/Visual -->
+          <div class='relative'>
+            <div class='bg-milano-gradient rounded-2xl p-8 text-center text-white'>
+              <div class='space-y-6'>
+                <div class='w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto'>
+                  <Code className='w-12 h-12' />
+                </div>
+                <div>
+                  <h3 class='text-2xl font-bold mb-2'>Ready to Build?</h3>
+                  <p class='text-white/90'>
+                    Join us in shaping the future of development with
+                    AI-powered tools and a passionate community.
+                  </p>
+                </div>
+                <div class='space-y-4 text-left'>
+                  <div class='flex items-center space-x-3'>
+                    <div class='w-2 h-2 bg-white rounded-full'></div>
+                    <span>Monthly meetups in Milano</span>
+                  </div>
+                  <div class='flex items-center space-x-3'>
+                    <div class='w-2 h-2 bg-white rounded-full'></div>
+                    <span>Hands-on coding workshops</span>
+                  </div>
+                  <div class='flex items-center space-x-3'>
+                    <div class='w-2 h-2 bg-white rounded-full'></div>
+                    <span>Networking with industry experts</span>
+                  </div>
+                  <div class='flex items-center space-x-3'>
+                    <div class='w-2 h-2 bg-white rounded-full'></div>
+                    <span>Access to latest AI development tools</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    {sortedSponsors.length > 0 && (
+      <SponsorGrid sponsors={sortedSponsors} title='Our Amazing Sponsors' />
+    )}
+
+    <!-- Call to Action -->
+    <section class='section-padding bg-white'>
+      <div class='max-w-4xl mx-auto container-padding text-center'>
+        <div class='space-y-8'>
+          <div>
+            <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+              Ready to Join the Community?
+            </h2>
+            <p class='text-lg text-gray-600 max-w-2xl mx-auto'>
+              Be part of Italy's premier AI development community. Learn,
+              connect, and build the future together.
+            </p>
+          </div>
+
+          <div class='flex flex-wrap justify-center gap-4'>
+            <a
+              href={siteConfig.social.meetup || '#'}
+              target='_blank'
+              rel='noopener noreferrer'
+              class='btn btn-primary btn-lg'
+            >
+              <Users className='w-5 h-5 mr-2' />
+              Join on Meetup
+            </a>
+            <a href='/events' class='btn btn-secondary btn-lg'>
+              <Calendar className='w-5 h-5 mr-2' />
+              View Events
+            </a>
+          </div>
+
+          <div class='text-sm text-gray-500'>
+            Or follow us on{' '}
+            <a
+              href={siteConfig.social.linkedin || '#'}
+              class='text-cursor-blue hover:text-blue-700 transition-colors duration-200'
+            >
+              LinkedIn
+            </a>{' '}
+            and{' '}
+            <a
+              href={siteConfig.social.luma || '#'}
+              class='text-cursor-blue hover:text-blue-700 transition-colors duration-200'
+            >
+              Lu.ma
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

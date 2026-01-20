@@ -1,0 +1,196 @@
+---
+import clsx from 'clsx';
+import { ExternalLink } from 'lucide-react';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  sponsors: CollectionEntry<'sponsors'>[];
+  title?: string;
+  showContent?: boolean;
+}
+
+const { sponsors, title = 'Our Sponsors', showContent = false } = Astro.props;
+
+const logoSizes: Record<string, { width: number; height: number }> = {
+  main: { width: 200, height: 80 },
+  platinum: { width: 200, height: 80 },
+  gold: { width: 150, height: 60 },
+  silver: { width: 120, height: 48 },
+  bronze: { width: 100, height: 40 },
+  community: { width: 80, height: 32 },
+};
+
+const mainSponsors = sponsors.filter(s => s.data.tier === 'main');
+const otherSponsors = sponsors.filter(s => s.data.tier !== 'main');
+---
+
+{sponsors.length > 0 && (
+  <section class='section-padding bg-gray-50'>
+    <div class='max-w-7xl mx-auto container-padding'>
+      <!-- Section Header -->
+      <div class='text-center mb-12'>
+        <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+          {title}
+        </h2>
+        <p class='text-lg text-gray-600 max-w-2xl mx-auto'>
+          We're grateful to our sponsors who make our community events
+          possible and help us grow the AI development ecosystem in Italy.
+        </p>
+      </div>
+
+      <!-- Main Sponsors -->
+      {mainSponsors.length > 0 && (
+        <div class='mb-12'>
+          <h3 class='text-xl font-semibold text-gray-900 mb-6 text-center'>
+            Main Sponsor
+          </h3>
+          <div class='grid grid-cols-1 gap-6'>
+            {mainSponsors.map(sponsor => (
+              <div class='bg-white rounded-2xl shadow-sm border border-gray-200 p-8 text-center card-hover'>
+                <div class='space-y-6'>
+                  <!-- Logo -->
+                  <div class='flex justify-center'>
+                    <img
+                      src={sponsor.data.logo}
+                      alt={`${sponsor.data.name} logo`}
+                      width={logoSizes.main.width}
+                      height={logoSizes.main.height}
+                      class='object-contain'
+                    />
+                  </div>
+
+                  <!-- Content -->
+                  <div class='space-y-4'>
+                    <h4 class='text-2xl font-bold text-gray-900'>
+                      {sponsor.data.name}
+                    </h4>
+                    <p class='text-lg text-gray-600'>
+                      {sponsor.data.description}
+                    </p>
+                  </div>
+
+                  <!-- Actions -->
+                  <div class='flex flex-wrap justify-center gap-4'>
+                    <a
+                      href={sponsor.data.website}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      class='btn btn-primary'
+                    >
+                      Visit Website
+                      <ExternalLink className='w-4 h-4 ml-2' />
+                    </a>
+                    <a
+                      href={`/sponsors/${sponsor.slug}`}
+                      class='btn btn-secondary'
+                    >
+                      Learn More
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Other Sponsors -->
+      {otherSponsors.length > 0 && (
+        <div>
+          <h3 class='text-xl font-semibold text-gray-900 mb-6 text-center'>
+            Supporting Sponsors
+          </h3>
+          <div class='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
+            {otherSponsors.map(sponsor => {
+              const logoSize = logoSizes[sponsor.data.tier] || logoSizes.community;
+              return (
+                <div class='bg-white rounded-xl shadow-sm border border-gray-200 p-6 text-center card-hover group'>
+                  <div class='space-y-4'>
+                    <!-- Logo -->
+                    <div class='flex justify-center'>
+                      <img
+                        src={sponsor.data.logo}
+                        alt={`${sponsor.data.name} logo`}
+                        width={logoSize.width}
+                        height={logoSize.height}
+                        class='object-contain transition-transform duration-200 group-hover:scale-105'
+                      />
+                    </div>
+
+                    <!-- Content -->
+                    <div class='space-y-2'>
+                      <h4 class='font-semibold text-gray-900'>{sponsor.data.name}</h4>
+                      <p class='text-sm text-gray-600 line-clamp-2'>
+                        {sponsor.data.description}
+                      </p>
+
+                      <!-- Tier Badge -->
+                      {sponsor.data.tier !== 'community' && (
+                        <span
+                          class={clsx(
+                            'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium',
+                            sponsor.data.tier === 'gold' && 'bg-yellow-100 text-yellow-800',
+                            sponsor.data.tier === 'silver' && 'bg-gray-100 text-gray-800',
+                            sponsor.data.tier === 'bronze' && 'bg-orange-100 text-orange-800'
+                          )}
+                        >
+                          {sponsor.data.tier.charAt(0).toUpperCase() + sponsor.data.tier.slice(1)} Sponsor
+                        </span>
+                      )}
+                    </div>
+
+                    <!-- Actions -->
+                    <div class='flex flex-col gap-2'>
+                      <a
+                        href={sponsor.data.website}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        class='btn btn-primary btn-sm w-full'
+                      >
+                        Visit Website
+                        <ExternalLink className='w-3 h-3 ml-1' />
+                      </a>
+
+                      {showContent && (
+                        <a
+                          href={`/sponsors/${sponsor.slug}`}
+                          class='text-sm text-cursor-blue hover:text-blue-700 transition-colors duration-200'
+                        >
+                          Learn More
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      <!-- Call to Action -->
+      <div class='mt-16 text-center'>
+        <div class='bg-white rounded-2xl shadow-sm border border-gray-200 p-8'>
+          <h3 class='text-2xl font-bold text-gray-900 mb-4'>
+            Become a Sponsor
+          </h3>
+          <p class='text-lg text-gray-600 mb-6 max-w-2xl mx-auto'>
+            Support the Italian AI development community and get your brand in
+            front of passionate developers, creators, and tech enthusiasts.
+          </p>
+          <div class='flex flex-wrap justify-center gap-4'>
+            <a
+              href='/sponsors/become-sponsor'
+              class='btn btn-primary btn-lg'
+            >
+              Sponsor Us
+            </a>
+            <a href='/contact' class='btn btn-secondary btn-lg'>
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)}

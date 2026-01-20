@@ -1,0 +1,31 @@
+---
+import { Home, RefreshCw } from 'lucide-react';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title='Server Error' description='Something went wrong on our end.'>
+  <div class='min-h-screen flex items-center justify-center bg-gray-50'>
+    <div class='max-w-md mx-auto container-padding text-center'>
+      <div class='space-y-8'>
+        <div class='space-y-4'>
+          <h1 class='text-9xl font-bold gradient-text'>500</h1>
+          <h2 class='text-2xl font-bold text-gray-900'>Server Error</h2>
+          <p class='text-gray-600'>
+            Oops! Something went wrong on our end. Please try again later.
+          </p>
+        </div>
+
+        <div class='flex flex-wrap justify-center gap-4'>
+          <a href='/' class='btn btn-primary'>
+            <Home className='w-4 h-4 mr-2' />
+            Go Home
+          </a>
+          <button onclick='window.location.reload()' class='btn btn-secondary'>
+            <RefreshCw className='w-4 h-4 mr-2' />
+            Refresh Page
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

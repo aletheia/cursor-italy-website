@@ -1,10 +1,27 @@
-import { SiteConfig } from './types';
+export interface SiteConfig {
+  title: string;
+  description: string;
+  url: string;
+  location: string;
+  organizer: string;
+  images: {
+    ogImage: string;
+    heroImage: string;
+    defaultEventImage: string;
+  };
+  social: {
+    meetup?: string;
+    linkedin?: string;
+    luma?: string;
+    sessionize?: string;
+  };
+}
 
 export const siteConfig: SiteConfig = {
   title: 'Cursor Italy',
   description:
     'The community for builders, creators, and curious minds shaping the future with AI in Italy',
-  url: 'https://cursor-italy.dev', // Update with actual domain
+  url: 'https://cursor-italy.dev',
   location: 'Milano, Italy',
   organizer: 'Luca Bianchi',
   images: {
@@ -14,9 +31,9 @@ export const siteConfig: SiteConfig = {
   },
   social: {
     meetup: 'https://www.meetup.com/cursor-italy/',
-    linkedin: 'https://linkedin.com/company/cursor-italy', // Update with actual LinkedIn
-    luma: 'https://lu.ma/cursor-milano-settembre', // Updated with actual Lu.ma event
-    sessionize: 'https://sessionize.com/cursor-italy', // Update with actual Sessionize
+    linkedin: 'https://linkedin.com/company/cursor-italy',
+    luma: 'https://lu.ma/cursor-milano-settembre',
+    sessionize: 'https://sessionize.com/cursor-italy',
   },
 };
 
