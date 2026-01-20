@@ -12,8 +12,6 @@ description: 'Kickstart 2026 with a deep dive into vibe coding and AI-assisted c
 image: '/images/events/2026-01-20-cursor-meetup/banner@1220x250.jpg'
 eventDetailImage: '/images/events/2026-01-20-cursor-meetup/banner@1220x250.jpg'
 published: true
-attendees: 0
-maxAttendees: 100
 tags: ['AI', 'Development', 'Cursor', 'Agentic AI', 'FeatureOps', 'Networking']
 speakers:
   - name: 'Alex Casalboni'
