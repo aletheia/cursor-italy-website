@@ -31,6 +31,7 @@ const events = defineCollection({
     speakers: z.array(speakerSchema).optional().default([]),
     tags: z.array(z.string()).optional().default([]),
     registrationUrl: z.string().optional(),
+    youtubeId: z.string().optional(),
     attendees: z.number().optional(),
     maxAttendees: z.number().optional(),
     published: z.boolean().optional().default(true),
