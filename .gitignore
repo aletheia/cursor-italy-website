@@ -42,6 +42,3 @@ next-env.d.ts
 # pnpm
 .pnpm-store/
 pnpm-lock.yaml
-
-# Event images (copied from content)
-public/images/events/ 
