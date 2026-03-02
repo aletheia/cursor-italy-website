@@ -35,6 +35,7 @@ const events = defineCollection({
     attendees: z.number().optional(),
     maxAttendees: z.number().optional(),
     published: z.boolean().optional().default(true),
+    gallery: z.array(z.string()).optional(),
   }),
 });
 

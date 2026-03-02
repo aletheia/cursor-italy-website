@@ -9,6 +9,7 @@ import {
 import { getCollection, render } from 'astro:content';
 
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import EventGallery from '@/components/EventGallery';
 import { siteConfig } from '@/lib/config';
 
 export async function getStaticPaths() {
@@ -277,6 +278,24 @@ const { Content } = await render(event);
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+      )}
+
+      <!-- Gallery -->
+      {data.gallery && data.gallery.length > 0 && (
+        <section class='section-padding bg-white'>
+          <div class='max-w-7xl mx-auto container-padding'>
+            <div class='text-center mb-12'>
+              <h2 class='text-3xl lg:text-4xl font-bold gradient-text mb-4'>
+                Gallery
+              </h2>
+              <p class='text-lg text-gray-600'>
+                Photos from the event. Click an image to open it, then use the button to download full size.
+              </p>
+            </div>
+
+            <EventGallery client:load images={data.gallery} title={data.title} />
           </div>
         </section>
       )}
